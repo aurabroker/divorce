@@ -78,25 +78,7 @@
   <div class="container">
     <div class="hero-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;">
 
-      <!-- LEWA: wideo -->
-      <div style="position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:16/9;background:var(--navy);">
-        <video
-          id="hero-video"
-          src="https://github.com/user-attachments/assets/7c593bf7-b8ff-47d8-af33-d6ca0661c832"
-          playsinline
-          controls
-          preload="metadata"
-          style="width:100%;height:100%;display:block;object-fit:cover;"
-        ></video>
-        <div id="video-overlay" onclick="playVideo()" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .3s;background:rgba(15,31,56,.42);">
-          <div id="play-btn" style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.13);backdrop-filter:blur(12px);border:1.5px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="margin-left:4px"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <p style="margin-top:1rem;font-family:var(--serif);font-size:.95rem;font-style:italic;color:rgba(255,255,255,.85);letter-spacing:.02em;">Posłuchaj o kancelarii</p>
-        </div>
-      </div>
-
-      <!-- PRAWA: tekst -->
+      <!-- LEWA: tekst -->
       <div>
         <p class="hero-eyebrow" style="justify-content:flex-start;">
           <span class="hero-eyebrow-dot"></span>
@@ -138,6 +120,24 @@
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M12 3L5.5 10 2 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             Konsultacje online
           </span>
+        </div>
+      </div>
+
+      <!-- PRAWA: wideo rozciągnięte na pełną wysokość kolumny -->
+      <div style="position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);background:var(--navy);align-self:stretch;min-height:320px;">
+        <video
+          id="hero-video"
+          src="https://github.com/user-attachments/assets/7c593bf7-b8ff-47d8-af33-d6ca0661c832"
+          playsinline
+          controls
+          preload="metadata"
+          style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;"
+        ></video>
+        <div id="video-overlay" onclick="playVideo()" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .3s;background:rgba(15,31,56,.42);z-index:1;">
+          <div id="play-btn" style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.13);backdrop-filter:blur(12px);border:1.5px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="margin-left:4px"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <p style="margin-top:1rem;font-family:var(--serif);font-size:.95rem;font-style:italic;color:rgba(255,255,255,.85);letter-spacing:.02em;">Posłuchaj o kancelarii</p>
         </div>
       </div>
 
