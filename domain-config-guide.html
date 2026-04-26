@@ -1,0 +1,312 @@
+<!-- ================================================================
+     MULTI-DOMAIN CONFIG — Kancelaria Idzik-Cieśla
+     Kopia tego pliku = osobna domena. Zmieniaj tylko blok SITE_CONFIG
+     i fragmenty oznaczone komentarzem [ZMIEŃ PER DOMENA].
+     style.css i page.js są WSPÓLNE (jeden hosting lub CDN).
+================================================================
+
+MAPA DOMEN → KOLORY AKCENTU:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Domena                  Dzielnica   accentColor  accentLight  accentBg
+─────────────────────────────────────────────────────────────────
+rozwod.waw.pl           Warszawa    #8B5E1A      #C49A3C      #FDF6E9   (złoty — główna)
+rozwodbielany.pl        Bielany     #1A4E8B      #4A7FC1      #EEF4FB   (stalowy niebieski)
+rozwodzoliborz.pl       Żoliborz    #5B2D8E      #8B5EC1      #F3EEF9   (fioletowy)
+rozwodwola.pl           Wola        #8B3A1A      #C46A3C      #FDF0E9   (ceglasty)
+rozwodochota.pl         Ochota      #1A6B5B      #3CA48B      #EEFAF7   (szmaragdowy)
+rozwodmokotow.pl        Mokotów     #2D4A6B      #5A7FA8      #EEF2F8   (granatowo-szary)
+rozwodtarchomin.pl      Tarchomin   #4A6B1A      #7FA83C      #F2F7EE   (oliwkowy)
+rozwodlegionowo.pl      Legionowo   #1A5E6B      #3C9AA8      #EEF8FA   (morski)
+rozwodlomianki.pl       Łomianki    #2D6B1A      #5AA83C      #EEF8EE   (zielony)
+rozwodjablonna.pl       Jabłonna    #6B5B1A      #A89040      #FAF7EE   (ochrowy)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BLOK KONFIGURACYJNY — wklej na początku <head> każdej strony:
+================================================================ -->
+
+<!-- ════════════════════════════════════════════════════════
+     PRZYKŁAD: rozwodbielany.pl
+════════════════════════════════════════════════════════ -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- [ZMIEŃ PER DOMENA] Meta SEO -->
+  <meta name="description" content="Adwokat rozwodowy Bielany — Kancelaria Magdalena Idzik-Cieśla. Bezpłatna konsultacja 30 minut. Tel. 605 089 552.">
+  <title>Adwokat Rozwodowy Bielany | Kancelaria Idzik-Cieśla</title>
+  <meta property="og:url" content="https://rozwodbielany.pl">
+  <link rel="canonical" href="https://rozwodbielany.pl">
+
+  <!-- [ZMIEŃ PER DOMENA] Konfiguracja motywu i dzielnicy -->
+  <script>
+    window.SITE_CONFIG = {
+      district:     "Bielany",
+      districtKey:  "bielany",
+      accentColor:  "#1A4E8B",
+      accentLight:  "#4A7FC1",
+      accentBg:     "#EEF4FB"
+    };
+  </script>
+
+  <!-- Fonty (wspólne) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- WSPÓLNY CSS — wskazuje na CDN lub subdomenę assets.idzik.org.pl -->
+  <link rel="stylesheet" href="https://assets.idzik.org.pl/style.css">
+  <!-- LUB jeśli na tym samym hostingu: -->
+  <!-- <link rel="stylesheet" href="/assets/style.css"> -->
+
+</head>
+<body>
+
+<!-- TICKER — identyczny na wszystkich stronach, wypełniany przez JS -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track"></div>
+</div>
+
+<!-- NAWIGACJA — identyczna, zmienia tylko meta/tytuly -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-name">Kancelaria Adwokacka</span>
+      <span class="nav-logo-sub">Magdalena Idzik‑Cieśla</span>
+    </a>
+    <nav class="nav-links nav-desktop" id="nav-desktop">
+      <a href="#pomoc"   class="nav-link">Zakres pomocy</a>
+      <a href="#proces"  class="nav-link">Jak działamy</a>
+      <a href="#opinie"  class="nav-link">Opinie</a>
+      <a href="#faq"     class="nav-link">FAQ</a>
+      <a href="#kontakt" class="btn nav-cta">Bezpłatna konsultacja</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO — [ZMIEŃ PER DOMENA]: eyebrow, h1, hero-sub -->
+<section class="hero section">
+  <div class="container">
+    <p class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      Kancelaria Adwokacka · Bielany · Prawo Rodzinne  <!-- [ZMIEŃ] -->
+    </p>
+
+    <h1>Adwokat rozwodowy<br>na <em>Bielanach</em></h1>  <!-- [ZMIEŃ] -->
+
+    <p class="hero-sub">
+      Skuteczna pomoc prawna w sprawach rodzinnych — blisko Ciebie, na Bielanach i w całej Warszawie.
+      Pierwsza konsultacja bezpłatna.  <!-- [ZMIEŃ] -->
+    </p>
+
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn btn-primary btn-lg">Umów bezpłatną konsultację →</a>
+      <a href="tel:+48605089552" class="btn btn-outline btn-lg">📞 605 089 552</a>
+    </div>
+
+    <div class="hero-trust">
+      <span class="hero-trust-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M12 3L5.5 10 2 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Bezpłatna konsultacja 30 min
+      </span>
+      <span class="hero-trust-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M12 3L5.5 10 2 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Bielany i cała Warszawa  <!-- [ZMIEŃ] -->
+      </span>
+      <span class="hero-trust-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M12 3L5.5 10 2 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Konsultacje online
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- STATYSTYKI, PASEK LOKALIZACJI, PAIN, USŁUGI, PROCES, OPINIE, FAQ -->
+<!-- Wklej identyczne sekcje z index.html (rozwod.waw.pl) -->
+<!-- Jedyna różnica: w location-strip możesz podkreślić lokalną lokalizację -->
+
+<!-- FORMULARZ — [ZMIEŃ] subject i _next per domena -->
+<section class="contact-section" id="kontakt">
+  <div class="container">
+    <div class="section-header section-center text-center">
+      <p class="section-label">Bezpłatna konsultacja</p>
+      <h2 class="section-title">Zrób pierwszy krok<br><em>w swoim tempie</em></h2>
+      <p class="section-desc">Oddzwonimy w ciągu 2 godzin.</p>
+    </div>
+    <form
+      id="contact-form"
+      action="https://formspree.io/f/{TWOJE_ID}"
+      method="POST"
+      class="form-card"
+    >
+      <input type="hidden" name="_next"    value="https://rozwodbielany.pl/dziekujemy.html"> <!-- [ZMIEŃ] -->
+      <input type="hidden" name="_subject" value="Zapytanie z rozwodbielany.pl">             <!-- [ZMIEŃ] -->
+      <input type="hidden" name="zrodlo"   value="rozwodbielany.pl">                        <!-- [ZMIEŃ] tracking -->
+      <input type="text"   name="_gotcha"  style="display:none">
+
+      <div class="form-card-title">Umów bezpłatną konsultację</div>
+      <p class="form-card-sub">Oddzwonimy w ciągu 2 godzin (pn–pt 8:00–18:00).</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="imie">Imię *</label>
+          <input type="text" id="imie" name="imie" required>
+        </div>
+        <div class="form-group">
+          <label for="tel">Telefon *</label>
+          <input type="tel" id="tel" name="telefon" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="temat">Czego dotyczy sprawa? *</label>
+        <select id="temat" name="temat" required>
+          <option value="" disabled selected>Wybierz temat</option>
+          <option>Rozwód bez orzekania o winie</option>
+          <option>Rozwód z orzeczeniem o winie</option>
+          <option>Podział majątku wspólnego</option>
+          <option>Opieka nad dziećmi / alimenty</option>
+          <option>Separacja prawna</option>
+          <option>Inne</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="wiadomosc">Krótki opis sytuacji</label>
+        <textarea id="wiadomosc" name="wiadomosc"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Wyślij i umów konsultację →</button>
+      <p class="form-notice">🔒 Dane są bezpieczne i chronione.</p>
+      <div id="form-success" style="display:none;text-align:center;padding:1.5rem 0;">
+        <div style="font-size:2rem;margin-bottom:.75rem">✅</div>
+        <div style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--navy)">Dziękujemy!</div>
+        <p style="font-size:.9rem;color:var(--text-muted)">Oddzwonimy wkrótce.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- STOPKA — identyczna na wszystkich domenach -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Kancelaria Adwokacka Magdalena Idzik‑Cieśla</div>
+        <p class="footer-tagline">Dyskretna i skuteczna pomoc prawna w sprawach rodzinnych. Warszawa i Mazowieckie.</p>
+        <div class="footer-contact">
+          <a href="tel:+48605089552">📞 605 089 552</a>
+          <a href="mailto:kancelaria@idzik.org.pl">✉ kancelaria@idzik.org.pl</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Usługi</h5>
+        <ul>
+          <li><a href="#pomoc">Rozwód</a></li>
+          <li><a href="#pomoc">Podział majątku</a></li>
+          <li><a href="#pomoc">Opieka nad dziećmi</a></li>
+          <li><a href="#pomoc">Alimenty</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Biura</h5>
+        <ul>
+          <li>ul. Ceramiczna 5E/79</li>
+          <li>03-126 Warszawa</li>
+          <li style="margin-top:.4rem">ul. Bolkowska 2A/28</li>
+          <li>01-466 Warszawa</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Inne dzielnice</h5>
+        <ul>
+          <li><a href="https://rozwod.waw.pl">Warszawa</a></li>
+          <li><a href="https://rozwodzoliborz.pl">Żoliborz</a></li>
+          <li><a href="https://rozwodwola.pl">Wola</a></li>
+          <li><a href="https://rozwodmokotow.pl">Mokotów</a></li>
+          <li><a href="https://rozwodlegionowo.pl">Legionowo</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem">
+      <span>© 2025 Kancelaria Adwokacka Magdalena Idzik-Cieśla. Wszelkie prawa zastrzeżone.</span>
+      <span><a href="/polityka-prywatnosci.html" style="color:inherit">Polityka prywatności</a> · <a href="/rodo.html" style="color:inherit">RODO</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- anime.js + wspólny skrypt -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="https://assets.idzik.org.pl/page.js"></script>
+<!-- LUB: <script src="/assets/page.js"></script> -->
+
+</body>
+</html>
+
+<!--
+================================================================
+INSTRUKCJA WDROŻENIA
+================================================================
+
+1. HOSTING I WSPÓLNE PLIKI
+   ─────────────────────────
+   Opcja A (zalecana): subdomena assets.idzik.org.pl
+   → Wgraj style.css i page.js na assets.idzik.org.pl
+   → Każda domena linkuje: href="https://assets.idzik.org.pl/style.css"
+   → Korzyść: jeden plik CSS/JS aktualizuje wszystkie 10 stron naraz
+
+   Opcja B: ta sama firma hostingowa, ścieżka relatywna
+   → Jeśli wszystkie domeny są na tym samym koncie hostingowym,
+     skieruj je na podkatalogi: /bielany/index.html, /zoliborz/index.html
+   → Linkuj: href="/assets/style.css"
+
+2. FORMULARZ — FORMSPREE
+   ─────────────────────────
+   a) Wejdź na formspree.io i załóż darmowe konto
+   b) Kliknij „New Form" → podaj e-mail: kancelaria@idzik.org.pl
+   c) Skopiuj wygenerowany ID (np. xkgwnpab)
+   d) W każdym index.html zastąp {TWOJE_ID} tym ID
+   e) Opcjonalnie: 10 oddzielnych formularzy per domena
+      (by wiedzieć SKĄD przyszło zapytanie — pole "zrodlo" też to robi)
+   f) Darmowy plan: 50 zgłoszeń/mies. Płatny (10$/mies.): bez limitu
+
+   Alternatywa: własny endpoint PHP na serwerze:
+   → action="https://idzik.org.pl/mail.php"
+
+3. RÓŻNICOWANIE PER DOMENA (SEO)
+   ─────────────────────────────
+   Co zmienić w każdym index.html:
+   ✓ window.SITE_CONFIG → district, districtKey, accentColor
+   ✓ <title> i <meta description> z nazwą dzielnicy
+   ✓ <link rel="canonical"> → własna domena
+   ✓ hero eyebrow, h1, hero-sub → wzmianka o dzielnicy
+   ✓ _subject i _next w formularzu
+   ✓ pole ukryte name="zrodlo" → śledź źródło leadów w mailu
+
+4. GOOGLE ANALYTICS
+   ─────────────────
+   Dodaj do <head> (ten sam GA4 property, różne strumienie):
+   <!-- Google tag (gtag.js) -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+   gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+
+5. GOOGLE MY BUSINESS
+   ─────────────────────
+   → Utwórz/zaktualizuj wizytówki GMB dla każdej lokalizacji
+   → Wskaż URL dzielnicy: rozwodbielany.pl dla GMB Bielany
+   → To klucz do "3-paku" w wynikach lokalnych
+
+================================================================
+-->
