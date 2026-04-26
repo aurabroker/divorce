@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Adwokat specjalizujący się w sprawach rozwodowych. Warszawa, Legionowo, Łomianki. Bezpłatna konsultacja 30 minut. Dyskretnie, skutecznie, po Twojej stronie.">
+<title>Adwokat Rozwodowy Warszawa | Kancelaria Prawa Rodzinnego</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f6f2eb;
+    --cream-dark: #ede8de;
+    --navy: #16253a;
+    --navy-light: #243650;
+    --gold: #9a7830;
+    --gold-light: #c4a35a;
+    --text: #2a3444;
+    --text-muted: #6b7a8e;
+    --white: #ffffff;
+    --border: rgba(26,42,66,.12);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', system-ui, sans-serif;
+    --radius: 4px;
+    --shadow: 0 2px 24px rgba(22,37,58,.08);
+    --shadow-lg: 0 8px 48px rgba(22,37,58,.14);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(246,242,235,.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: .02em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    font-size: .85rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-cta {
+    background: var(--navy) !important;
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: var(--radius);
+    letter-spacing: .03em !important;
+    transition: background .2s !important;
+  }
+  .nav-cta:hover { background: var(--navy-light) !important; }
+  .nav-mobile-btn {
+    display: none;
+    background: none; border: none; cursor: pointer;
+    flex-direction: column; gap: 5px; padding: 4px;
+  }
+  .nav-mobile-btn span {
+    display: block; width: 22px; height: 1.5px;
+    background: var(--navy); border-radius: 2px;
+    transition: all .25s;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 120px 5% 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(154,120,48,.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(22,37,58,.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 28px; height: 1px;
+    background: var(--gold);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    letter-spacing: -.01em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--navy);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    font-family: var(--sans);
+    font-size: .9rem;
+    font-weight: 500;
+    letter-spacing: .04em;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .btn-primary:hover { background: var(--navy-light); transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: .5rem;
+    color: var(--navy);
+    padding: 14px 0;
+    font-size: .9rem;
+    font-weight: 400;
+    letter-spacing: .04em;
+    text-decoration: none;
+    border-bottom: 1px solid var(--navy);
+    transition: color .2s, border-color .2s;
+  }
+  .btn-secondary:hover { color: var(--gold); border-color: var(--gold); }
+  .hero-trust {
+    display: flex; gap: 1.5rem; margin-top: 2.5rem; flex-wrap: wrap;
+  }
+  .hero-trust-item {
+    display: flex; align-items: center; gap: .5rem;
+    font-size: .82rem; color: var(--text-muted);
+  }
+  .hero-trust-item::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* HERO CARD */
+  .hero-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+  }
+  .hero-card-label {
+    font-size: .75rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .hero-card h3 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: .5rem;
+    line-height: 1.3;
+  }
+  .hero-card p {
+    font-size: .9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label {
+    display: block;
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: .4rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--cream);
+    font-family: var(--sans);
+    font-size: .9rem;
+    color: var(--text);
+    transition: border-color .2s, background .2s;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: var(--white);
+  }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    width: 100%;
+    padding: 13px;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--sans);
+    font-size: .9rem;
+    font-weight: 500;
+    letter-spacing: .05em;
+    cursor: pointer;
+    transition: background .2s;
+    margin-top: .5rem;
+  }
+  .form-submit:hover { background: var(--navy-light); }
+  .form-disclaimer {
+    font-size: .75rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: .75rem;
+    line-height: 1.5;
+  }
+
+  /* STATS */
+  .stats-bar {
+    background: var(--navy);
+    padding: 3rem 5%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+  .stat-item {}
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: .3rem;
+    letter-spacing: -.02em;
+  }
+  .stat-number span { color: var(--gold-light); }
+  .stat-label {
+    font-size: .8rem;
+    color: rgba(255,255,255,.55);
+    font-weight: 300;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+
+  /* SECTION COMMONS */
+  section { padding: 6rem 5%; }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: .6rem;
+    font-size: .75rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .section-tag::before {
+    content: ''; display: block;
+    width: 24px; height: 1px; background: var(--gold);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 1.2rem;
+    letter-spacing: -.01em;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 580px;
+  }
+
+  /* PAIN POINTS */
+  .pain { background: var(--white); }
+  .pain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .pain-list { margin-top: 2rem; }
+  .pain-item {
+    display: flex; gap: 1.2rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pain-item:first-child { border-top: 1px solid var(--border); }
+  .pain-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .pain-item h4 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: .3rem;
+  }
+  .pain-item p {
+    font-size: .88rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .pain-quote {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 3rem;
+    position: relative;
+  }
+  .pain-quote::before {
+    content: '\201C';
+    font-family: var(--serif);
+    font-size: 6rem;
+    color: var(--gold-light);
+    opacity: .3;
+    position: absolute;
+    top: .5rem; left: 1.5rem;
+    line-height: 1;
+  }
+  .pain-quote blockquote {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.7;
+    position: relative; z-index: 1;
+  }
+  .pain-quote cite {
+    display: block;
+    margin-top: 1.5rem;
+    font-family: var(--sans);
+    font-size: .82rem;
+    color: var(--text-muted);
+    font-style: normal;
+    letter-spacing: .04em;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .service-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+  }
+  .service-number {
+    font-family: var(--serif);
+    font-size: 3rem;
+    color: var(--cream-dark);
+    line-height: 1;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .service-card h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: .6rem;
+  }
+  .service-card p {
+    font-size: .88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+  .service-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+  .service-tag {
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .05em;
+    padding: 3px 10px;
+    background: var(--cream);
+    border-radius: 20px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* PROCESS */
+  .process { background: var(--navy); color: var(--white); }
+  .process .section-tag { color: var(--gold-light); }
+  .process .section-tag::before { background: var(--gold-light); }
+  .process .section-title { color: var(--white); }
+  .process .section-desc { color: rgba(255,255,255,.6); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 3rem;
+  }
+  .process-step {
+    background: rgba(22,37,58,.4);
+    padding: 2.5rem 2rem;
+    transition: background .2s;
+  }
+  .process-step:hover { background: rgba(255,255,255,.05); }
+  .step-num {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    color: var(--gold-light);
+    opacity: .4;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .process-step h4 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: .6rem;
+  }
+  .process-step p {
+    font-size: .85rem;
+    color: rgba(255,255,255,.55);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .testimonial {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+  .testimonial-stars { color: var(--gold); font-size: .9rem; margin-bottom: 1rem; }
+  .testimonial blockquote {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .testimonial-author {
+    display: flex; align-items: center; gap: .75rem;
+  }
+  .testimonial-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--cream-dark);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--navy);
+    flex-shrink: 0;
+  }
+  .testimonial-name {
+    font-size: .88rem;
+    font-weight: 500;
+    color: var(--navy);
+  }
+  .testimonial-meta {
+    font-size: .78rem;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  /* FAQ */
+  .faq { background: var(--white); }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .faq-list { margin-top: 0; }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .faq-question {
+    width: 100%;
+    background: none; border: none; cursor: pointer;
+    text-align: left;
+    padding: 1.2rem 0;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem;
+    font-family: var(--sans);
+    font-size: .95rem;
+    font-weight: 500;
+    color: var(--navy);
+    transition: color .2s;
+  }
+  .faq-question:hover { color: var(--gold); }
+  .faq-toggle {
+    width: 20px; height: 20px; flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .75rem;
+    color: var(--text-muted);
+    transition: all .2s;
+  }
+  .faq-item.open .faq-toggle {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+    transform: rotate(45deg);
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease, padding .3s;
+  }
+  .faq-answer p {
+    font-size: .88rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    padding-bottom: 1.2rem;
+    font-weight: 300;
+  }
+  .faq-item.open .faq-answer { max-height: 300px; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--cream-dark);
+    text-align: center;
+    padding: 5rem 5%;
+  }
+  .cta-badge {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--white);
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+  .cta-section h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+  .cta-section p {
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-phone {
+    display: inline-flex; align-items: center; gap: .6rem;
+    background: white;
+    color: var(--navy);
+    border: 1px solid var(--border);
+    padding: 14px 24px;
+    border-radius: var(--radius);
+    font-family: var(--sans);
+    font-size: .9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all .2s;
+  }
+  .btn-phone:hover { border-color: var(--navy); box-shadow: var(--shadow); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,.6);
+    padding: 3rem 5%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+  }
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: .75rem;
+  }
+  .footer-brand span { color: var(--gold-light); }
+  .footer-desc {
+    font-size: .82rem;
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 280px;
+  }
+  .footer h4 {
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+    margin-bottom: 1rem;
+  }
+  .footer ul { list-style: none; }
+  .footer ul li {
+    font-size: .85rem;
+    font-weight: 300;
+    margin-bottom: .5rem;
+    color: rgba(255,255,255,.65);
+  }
+  .footer ul li a {
+    color: rgba(255,255,255,.65);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .footer ul li a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    background: rgba(0,0,0,.2);
+    padding: 1rem 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: .75rem;
+    color: rgba(255,255,255,.35);
+  }
+
+  /* LOCATION BAR */
+  .location-bar {
+    background: var(--cream-dark);
+    padding: .65rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .location-item {
+    display: flex; align-items: center; gap: .4rem;
+    font-size: .8rem;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+  .location-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp .7s ease forwards;
+  }
+  .delay-1 { animation-delay: .1s; }
+  .delay-2 { animation-delay: .2s; }
+  .delay-3 { animation-delay: .3s; }
+  .delay-4 { animation-delay: .4s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; padding-top: 100px; }
+    .hero-card { max-width: 540px; }
+    .pain-grid, .faq-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    footer { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    .nav-mobile-btn { display: flex; }
+    section { padding: 4rem 4%; }
+    .stats-bar { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .location-bar { gap: 1rem; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Kancelaria<span>.</span>PL</a>
+  <div class="nav-links">
+    <a href="#uslugi">Zakres pomocy</a>
+    <a href="#proces">Jak działamy</a>
+    <a href="#faq">FAQ</a>
+    <a href="#kontakt" class="nav-cta">Bezpłatna konsultacja</a>
+  </div>
+  <button class="nav-mobile-btn" aria-label="Menu" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow fade-up">Prawo rodzinne · Warszawa · Mazowieckie</div>
+    <h1 class="fade-up delay-1">Spokojnie przez<br><em>najtrudniejszy</em><br>etap życia</h1>
+    <p class="hero-desc fade-up delay-2">
+      Rozwód to nie tylko formalność prawna — to emocjonalny przełom, który wymaga prawnika, który słucha. Zadbamy o Twoje interesy i przyszłość Twoją i Twoich dzieci.
+    </p>
+    <div class="hero-actions fade-up delay-3">
+      <a href="#kontakt" class="btn-primary">Umów bezpłatną konsultację →</a>
+      <a href="#proces" class="btn-secondary">Jak wygląda współpraca</a>
+    </div>
+    <div class="hero-trust fade-up delay-4">
+      <span class="hero-trust-item">Bezpłatne 30 minut na start</span>
+      <span class="hero-trust-item">Pełna dyskrecja</span>
+      <span class="hero-trust-item">Warszawa, Legionowo, Łomianki</span>
+    </div>
+  </div>
+
+  <div class="fade-up delay-2">
+    <div class="hero-card">
+      <div class="hero-card-label">Bezpłatna konsultacja — 30 minut</div>
+      <h3>Pierwsze spotkanie bez zobowiązań</h3>
+      <p>Omówimy Twoją sytuację i odpowiemy na najważniejsze pytania.</p>
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="imie">Imię</label>
+            <input type="text" id="imie" placeholder="Jan" required>
+          </div>
+          <div class="form-group">
+            <label for="tel">Telefon</label>
+            <input type="tel" id="tel" placeholder="+48 000 000 000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="temat">Czego dotyczy sprawa?</label>
+          <select id="temat">
+            <option value="">Wybierz temat</option>
+            <option>Rozwód bez orzekania o winie</option>
+            <option>Rozwód z orzeczeniem o winie</option>
+            <option>Podział majątku wspólnego</option>
+            <option>Opieka nad dziećmi / alimenty</option>
+            <option>Separacja</option>
+            <option>Inne</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="wiadomosc">Krótki opis sytuacji (opcjonalnie)</label>
+          <textarea id="wiadomosc" placeholder="W kilku słowach opisz swoją sytuację..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Umów konsultację →</button>
+        <p class="form-disclaimer">🔒 Dane są chronione. Oddzwonimy w ciągu 2 godzin w dni robocze.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">12<span>+</span></div>
+    <div class="stat-label">Lat doświadczenia</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">850<span>+</span></div>
+    <div class="stat-label">Przeprowadzonych spraw</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">97<span>%</span></div>
+    <div class="stat-label">Klientów poleca nas dalej</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">3</div>
+    <div class="stat-label">Lokalizacje w Mazowieckim</div>
+  </div>
+</div>
+
+<!-- LOCATION BAR -->
+<div class="location-bar">
+  <div class="location-item"><div class="location-dot"></div>Warszawa (Śródmieście)</div>
+  <div class="location-item"><div class="location-dot"></div>Legionowo</div>
+  <div class="location-item"><div class="location-dot"></div>Łomianki</div>
+  <div class="location-item"><div class="location-dot"></div>Konsultacje online dla całej Polski</div>
+</div>
+
+<!-- PAIN POINTS -->
+<section class="pain" id="uslugi">
+  <div class="pain-grid">
+    <div>
+      <div class="section-tag">Rozumiem Twoje obawy</div>
+      <h2 class="section-title">Wiesz, że to trudne.<br>Pomagamy to <em>przejść</em>.</h2>
+      <p class="section-desc">Każdy rozwód jest inny. Niezależnie od tego, jak skomplikowana jest Twoja sytuacja — masz prawo do rzetelnej pomocy prawnej.</p>
+      <div class="pain-list">
+        <div class="pain-item">
+          <div class="pain-icon">⚖️</div>
+          <div>
+            <h4>Nie wiem, od czego zacząć</h4>
+            <p>Wyjaśnimy każdy krok procedury. Bez prawniczego żargonu, po ludzku — od złożenia pozwu aż po prawomocny wyrok.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">🏠</div>
+          <div>
+            <h4>Obawiamy się o mieszkanie i majątek</h4>
+            <p>Zadbamy o sprawiedliwy podział wspólnego majątku — nieruchomości, oszczędności, firmy, kredytów.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">👶</div>
+          <div>
+            <h4>Dzieci to dla mnie priorytet</h4>
+            <p>Pomożemy ustalić plan wychowawczy, który zabezpieczy dobro dzieci i zagwarantuje Ci realny kontakt.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">🤝</div>
+          <div>
+            <h4>Chcę to załatwić polubownie</h4>
+            <p>Mediacja jest często szybsza i mniej kosztowna. Wspieramy rozwiązania bez zbędnych konfliktów, gdy to możliwe.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="pain-quote">
+        <blockquote>
+          „Kiedy do mnie trafiłam, czułam się zupełnie zagubiona. Pani mecenas spokojnie wyjaśniła mi każdy krok. Po raz pierwszy od miesięcy poczułam, że mam kogoś po swojej stronie."
+        </blockquote>
+        <cite>— Klientka kancelarii, Warszawa 2024</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section>
+  <div class="section-tag">Zakres pomocy</div>
+  <h2 class="section-title">Co obejmuje <em>nasza pomoc</em></h2>
+  <p class="section-desc">Kompleksowa obsługa w sprawach rodzinnych — od pierwszej rozmowy do prawomocnego wyroku.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-number">01</div>
+      <h3>Rozwód</h3>
+      <p>Pozew, reprezentacja przed sądem, negocjacje z drugą stroną. Zarówno sprawy polubowne, jak i sporne.</p>
+      <div class="service-tags">
+        <span class="service-tag">Z orzekaniem o winie</span>
+        <span class="service-tag">Bez orzekania</span>
+        <span class="service-tag">Separacja</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <h3>Podział majątku</h3>
+      <p>Analiza składników wspólnego majątku, negocjacje, reprezentacja w postępowaniu sądowym lub notarialnym.</p>
+      <div class="service-tags">
+        <span class="service-tag">Nieruchomości</span>
+        <span class="service-tag">Firmy</span>
+        <span class="service-tag">Kredyty</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">03</div>
+      <h3>Opieka i alimenty</h3>
+      <p>Ustalenie planu wychowawczego, alimentów i prawa do kontaktów z dzieckiem. Zmiana ustalonych warunków.</p>
+      <div class="service-tags">
+        <span class="service-tag">Plan wychowawczy</span>
+        <span class="service-tag">Alimenty</span>
+        <span class="service-tag">Kontakty</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="proces">
+  <div class="section-tag">Jak działamy</div>
+  <h2 class="section-title" style="color:white">Cztery kroki do <em style="color:var(--gold-light)">nowego początku</em></h2>
+  <p class="section-desc">Przejrzysty proces, bez niespodzianek.</p>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <h4>Bezpłatna konsultacja</h4>
+      <p>30 minut, bez zobowiązań. Omówimy Twoją sytuację i powiemy, czego możesz się spodziewać.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <h4>Analiza sprawy i strategia</h4>
+      <p>Dokładnie analizujemy Twoją sytuację i opracowujemy indywidualną strategię działania.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <h4>Reprezentacja i negocjacje</h4>
+      <p>Przygotowujemy dokumenty, prowadzimy negocjacje i reprezentujemy Cię przed sądem.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <h4>Wyrok i nowy etap</h4>
+      <p>Prawomocny wyrok i pewność, że wszystkie kluczowe kwestie zostały zabezpieczone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-tag">Opinie klientów</div>
+  <h2 class="section-title">Co mówią <em>nasi klienci</em></h2>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <blockquote>„Profesjonalna obsługa od początku do końca. Moja sprawa była skomplikowana, ale mecenas zawsze wiedziała, co robić. Polecam bez wahania."</blockquote>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">MK</div>
+        <div>
+          <div class="testimonial-name">Marek K.</div>
+          <div class="testimonial-meta">Sprawa rozwodowa, Legionowo</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <blockquote>„Bałam się, że stracę kontakt z dziećmi. Dzięki kancelarii udało się ustalić warunki, które są dobre dla całej rodziny. Jestem bardzo wdzięczna."</blockquote>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">AW</div>
+        <div>
+          <div class="testimonial-name">Anna W.</div>
+          <div class="testimonial-meta">Opieka nad dziećmi, Warszawa</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <blockquote>„Sprawny, rzeczowy kontakt. Zawsze dostępni, gdy potrzebowałem odpowiedzi. Podział majątku zakończony szybciej niż myślałem."</blockquote>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">PT</div>
+        <div>
+          <div class="testimonial-name">Piotr T.</div>
+          <div class="testimonial-meta">Podział majątku, Łomianki</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-grid">
+    <div>
+      <div class="section-tag">Najczęstsze pytania</div>
+      <h2 class="section-title">Odpowiadamy na <em>Twoje pytania</em></h2>
+      <p class="section-desc">Nie znajdziesz tu odpowiedzi? Zadzwoń lub napisz — skontaktujemy się w ciągu 2 godzin.</p>
+      <div style="margin-top:2rem">
+        <a href="tel:+48000000000" class="btn-primary" style="display:inline-flex">Zadzwoń teraz →</a>
+      </div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Ile trwa sprawa rozwodowa w Polsce?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Czas trwania zależy od wielu czynników. Rozwód bez orzekania o winie, gdy obie strony się zgadzają, może trwać od 3 do 6 miesięcy. Sprawy sporne, zwłaszcza z dziećmi i podziałem majątku, mogą trwać rok lub dłużej. Podczas pierwszej konsultacji ocenimy realny czas dla Twojej sprawy.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Ile kosztuje rozwód z adwokatem?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Koszty zależą od stopnia skomplikowania sprawy. Na honorarium kancelarii składają się: wynagrodzenie za prowadzenie sprawy (ustalane indywidualnie), opłata sądowa od pozwu (600 zł) i ewentualne koszty biegłych. Podajemy pełne wynagrodzenie przed podpisaniem umowy — bez niespodzianek.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Czy mogę uzyskać rozwód bez orzekania o winie?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Tak — jeśli obie strony się zgadzają, sąd może orzec rozwód bez ustalania winy. Jest to szybsza i mniej kosztowna opcja, a nierzadko korzystniejsza dla obu stron. Doradzimy, które rozwiązanie jest lepsze w Twojej konkretnej sytuacji.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Co z mieszkaniem i kredytem hipotecznym?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Podział majątku wspólnego — w tym nieruchomości i kredytów — może być przeprowadzony w trakcie sprawy rozwodowej lub po niej. Istnieje kilka scenariuszy: sprzedaż, spłata jednego z małżonków lub ustanowienie współwłasności. Omówimy wszystkie opcje i ich konsekwencje.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Czy mogę skonsultować się online?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Tak. Prowadzimy konsultacje online (Teams, Zoom, telefon) dla klientów z całego kraju. Stacjonarnie przyjmujemy w Warszawie, Legionowie i Łomiankach. Pierwsza konsultacja 30 minut jest bezpłatna, niezależnie od formy.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Jak wygląda pierwsza wizyta?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Bezpłatna konsultacja trwa 30 minut. Słuchamy — opowiadasz nam o sytuacji swoimi słowami. Odpowiadamy na najważniejsze pytania i oceniamy, jakie masz możliwości. Nie musisz przynosić żadnych dokumentów. Bez zobowiązań.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="kontakt">
+  <div class="cta-badge">Bezpłatna konsultacja · 30 minut</div>
+  <h2>Zrób pierwszy krok<br>w swoim tempie</h2>
+  <p>Nie musisz wiedzieć wszystkiego od razu. Wystarczy jeden telefon lub formularz — resztą zajmiemy się my.</p>
+  <div class="cta-actions">
+    <a href="#" class="btn-primary" onclick="document.getElementById('imie').scrollIntoView({behavior:'smooth'}); return false;">Wypełnij formularz →</a>
+    <a href="tel:+48000000000" class="btn-phone">📞 Zadzwoń: +48 000 000 000</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Kancelaria<span>.</span>PL</div>
+    <p class="footer-desc">Kancelaria adwokacka specjalizująca się w prawie rodzinnym. Dyskretnie, rzetelnie, po Twojej stronie.</p>
+  </div>
+  <div>
+    <h4>Usługi</h4>
+    <ul>
+      <li><a href="#">Rozwód</a></li>
+      <li><a href="#">Podział majątku</a></li>
+      <li><a href="#">Opieka nad dziećmi</a></li>
+      <li><a href="#">Alimenty</a></li>
+      <li><a href="#">Testamenty</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Kontakt</h4>
+    <ul>
+      <li>Warszawa, ul. [ulica]</li>
+      <li>Legionowo, ul. [ulica]</li>
+      <li>Łomianki, ul. [ulica]</li>
+      <li><a href="tel:+48000000000">+48 000 000 000</a></li>
+      <li><a href="mailto:kontakt@kancelaria.pl">kontakt@kancelaria.pl</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 Kancelaria. Wszystkie prawa zastrzeżone.</span>
+  <span>Polityka prywatności · RODO</span>
+</div>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = '✓ Dziękujemy! Oddzwonimy wkrótce.';
+  btn.style.background = '#3B6D11';
+  btn.disabled = true;
+}
+
+function toggleMobileMenu() {
+  const links = document.querySelector('.nav-links');
+  if (links.style.display === 'flex') {
+    links.style.display = 'none';
+  } else {
+    links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--cream);padding:1.5rem 4%;border-bottom:1px solid var(--border);gap:1rem;z-index:99;';
+  }
+}
+
+// Intersection Observer for fade-up elements
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.service-card, .process-step, .testimonial, .pain-item').forEach(el => {
+  el.style.cssText += 'opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
