@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /dziekujemy.html
+
+Sitemap: https://rozwodlomianki.pl/sitemap.xml

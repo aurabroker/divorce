@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /dziekujemy.html
+
+Sitemap: https://rozwodbielany.pl/sitemap.xml

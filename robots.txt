@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /dziekujemy.html
+
+Sitemap: https://rozwod.waw.pl/sitemap.xml
