@@ -1,132 +1,255 @@
-<!DOCTYPE html>
+#!/usr/bin/env python3
+"""
+Generator stron per-domena — Kancelaria Adwokacka Magdalena Idzik-Cieśla
+Uruchomienie: python3 build.py
+Tworzy: {klucz}/index.html dla każdej domeny (assets: ../assets/)
+"""
+
+import os
+
+DISTRICTS = [
+    dict(
+        name="Bemowo", name_gen="Bemowa", key="bemowo",
+        domain="rozwodbemowo.pl", url="https://rozwodbemowo.pl",
+        accent="#8B1A3A", accent_light="#C13C6A", accent_bg="#FDF0F4",
+        neighborhoods="Chrzanów, Jelonki Północne, Jelonki Południowe, Lotnisko, Wola Ulrychów, Górce",
+        court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
+        t_ini="KM", t_name="Katarzyna M.",
+        t_quote="Potrzebowałam adwokata z doświadczeniem blisko Bemowa. Pani mecenas przeprowadziła mnie przez całą sprawę krok po kroku — wyrok zgodny z oczekiwaniami.",
+        t_topic="Sprawa rozwodowa · Bemowo",
+    ),
+    dict(
+        name="Bielany", name_gen="Bielan", key="bielany",
+        domain="rozwodbielany.pl", url="https://rozwodbielany.pl",
+        accent="#1A4E8B", accent_light="#4A7FC1", accent_bg="#EEF4FB",
+        neighborhoods="Marymont, Chomiczówka, Wrzeciono, Słodowiec, Młociny, Placówka",
+        court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
+        t_ini="TB", t_name="Tomasz B.",
+        t_quote="Sprawa była skomplikowana, ale pani mecenas znała każdy szczegół. Polecam mieszkańcom Bielan i całej północnej Warszawy.",
+        t_topic="Podział majątku · Bielany",
+    ),
+    dict(
+        name="Żoliborz", name_gen="Żoliborza", key="zoliborz",
+        domain="rozwodzoliborz.pl", url="https://rozwodzoliborz.pl",
+        accent="#5B2D8E", accent_light="#8B5EC1", accent_bg="#F3EEF9",
+        neighborhoods="Stary Żoliborz, Sady Żoliborskie, Piaski, Potok, Marymont-Ruda",
+        court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
+        t_ini="EK", t_name="Ewa K.",
+        t_quote="Mieszkam na Żoliborzu i szukałam adwokata, który naprawdę słucha. Pani mecenas była dokładnie tym, czego potrzebowałam. Profesjonalizm i spokój.",
+        t_topic="Opieka nad dziećmi · Żoliborz",
+    ),
+    dict(
+        name="Wola", name_gen="Woli", key="wola",
+        domain="rozwodwola.pl", url="https://rozwodwola.pl",
+        accent="#8B3A1A", accent_light="#C46A3C", accent_bg="#FDF0E9",
+        neighborhoods="Czyste, Mirów, Odolany, Ulrychów, Koło, Szymańów",
+        court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
+        t_ini="RN", t_name="Robert N.",
+        t_quote="Sprawny kontakt, konkretne informacje, zero owijania w bawełnę. Sprawa z Woli zakończona szybciej niż przewidywał sąd. Polecam.",
+        t_topic="Sprawa rozwodowa · Wola",
+    ),
+    dict(
+        name="Ochota", name_gen="Ochoty", key="ochota",
+        domain="rozwodochota.pl", url="https://rozwodochota.pl",
+        accent="#1A6B5B", accent_light="#3CA48B", accent_bg="#EEFAF7",
+        neighborhoods="Rakowiec, Stara Ochota, Szczęśliwice, Filtry",
+        court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
+        t_ini="MJ", t_name="Marta J.",
+        t_quote="Jako mieszkanka Ochoty doceniam dostępność kancelarii. Konsultacja online zorganizowana w ciągu doby, sprawa poprowadzona znakomicie.",
+        t_topic="Separacja prawna · Ochota",
+    ),
+    dict(
+        name="Mokotów", name_gen="Mokotowa", key="mokotow",
+        domain="rozwodmokotow.pl", url="https://rozwodmokotow.pl",
+        accent="#2D4A6B", accent_light="#5A7FA8", accent_bg="#EEF2F8",
+        neighborhoods="Stary Mokotów, Służewiec, Sadyba, Wierzbno, Sielce, Ksawerów",
+        court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
+        t_ini="AS", t_name="Aleksandra S.",
+        t_quote="Polecam kancelarię wszystkim z Mokotowa. Profesjonalne podejście, pełna dyskrecja i wynik, który satysfakcjonuje.",
+        t_topic="Podział majątku · Mokotów",
+    ),
+    dict(
+        name="Tarchomin", name_gen="Tarchomina", key="tarchomin",
+        domain="rozwodtarchomin.pl", url="https://rozwodtarchomin.pl",
+        accent="#4A6B1A", accent_light="#7FA83C", accent_bg="#F2F7EE",
+        neighborhoods="Tarchomin, Henryków, Nowodwory, Białołęka Dworska",
+        court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
+        t_ini="KW", t_name="Krzysztof W.",
+        t_quote="Z Tarchomina do Warszawy bywa daleko, ale konsultacja online rozwiązała ten problem. Świetna komunikacja i wyniki powyżej oczekiwań.",
+        t_topic="Sprawa rozwodowa · Tarchomin",
+    ),
+    dict(
+        name="Legionowo", name_gen="Legionowa", key="legionowo",
+        domain="rozwodlegionowo.pl", url="https://rozwodlegionowo.pl",
+        accent="#1A5E6B", accent_light="#3C9AA8", accent_bg="#EEF8FA",
+        neighborhoods="centrum Legionowa, Piaski, Przymorze, os. Sobieskiego",
+        court="właściwy sąd okręgowy", court_addr="pomagamy ustalić właściwy sąd dla Twojego miejsca zamieszkania",
+        t_ini="AW", t_name="Anna W.",
+        t_quote="Bałam się, że stracę kontakt z dziećmi. Pani mecenas skutecznie zawalczyła o moje prawa. Warunki, które ustaliliśmy, są dobre dla całej rodziny.",
+        t_topic="Opieka nad dziećmi · Legionowo",
+    ),
+    dict(
+        name="Łomianki", name_gen="Łomianek", key="lomianki",
+        domain="rozwodlomianki.pl", url="https://rozwodlomianki.pl",
+        accent="#2D6B1A", accent_light="#5AA83C", accent_bg="#EEF8EE",
+        neighborhoods="centrum Łomianek, Dąbrowa, Kiełpin, Łomianki Górne, Kazuń",
+        court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
+        t_ini="PT", t_name="Piotr T.",
+        t_quote="Sprawny kontakt, zawsze dostępni gdy potrzebowałem odpowiedzi. Podział majątku zakończony szybciej niż myślałem. Merytoryczna pomoc na każdym etapie.",
+        t_topic="Podział majątku · Łomianki",
+    ),
+    dict(
+        name="Jabłonna", name_gen="Jabłonny", key="jablonna",
+        domain="rozwodjablonna.pl", url="https://rozwodjablonna.pl",
+        accent="#6B5B1A", accent_light="#A89040", accent_bg="#FAF7EE",
+        neighborhoods="Jabłonna, Chotomów, Skierdy, Rajszew, Dąbrowa Chotomowska, Trzciany",
+        court="właściwy sąd okręgowy", court_addr="pomagamy ustalić właściwy sąd dla Twojego miejsca zamieszkania",
+        t_ini="DK", t_name="Dorota K.",
+        t_quote="Mieszkam pod Jabłonną i nie spodziewałam się tak sprawnej obsługi. Konsultacja online, szybka analiza i pełne zaangażowanie. Bardzo polecam.",
+        t_topic="Sprawa rozwodowa · Jabłonna",
+    ),
+]
+
+ALL_DOMAINS = [
+    ("Warszawa",  "https://rozwod.waw.pl"),
+    ("Bemowo",    "https://rozwodbemowo.pl"),
+    ("Bielany",   "https://rozwodbielany.pl"),
+    ("Żoliborz",  "https://rozwodzoliborz.pl"),
+    ("Wola",      "https://rozwodwola.pl"),
+    ("Ochota",    "https://rozwodochota.pl"),
+    ("Mokotów",   "https://rozwodmokotow.pl"),
+    ("Tarchomin", "https://rozwodtarchomin.pl"),
+    ("Legionowo", "https://rozwodlegionowo.pl"),
+    ("Łomianki",  "https://rozwodlomianki.pl"),
+    ("Jabłonna",  "https://rozwodjablonna.pl"),
+]
+
+
+def footer_links_html(current_url):
+    items = []
+    for name, url in ALL_DOMAINS:
+        if url == current_url:
+            continue
+        items.append(f'          <li><a href="{url}">{name}</a></li>')
+    return "\n".join(items)
+
+
+def build_page(d):
+    footer = footer_links_html(d["url"])
+
+    if "właściwy" in d["court"]:
+        court_faq = (
+            f"Właściwy sąd zależy od miejsca Twojego zameldowania. "
+            f"Skontaktuj się z nami — pomożemy ustalić właściwy sąd okręgowy "
+            f"i przygotujemy wszystkie dokumenty potrzebne do złożenia pozwu."
+        )
+    else:
+        court_faq = (
+            f"Dla mieszkańców {d['name']} właściwy jest <strong>{d['court']}</strong> "
+            f"przy {d['court_addr']}. Kancelaria reprezentuje klientów przed tym sądem "
+            f"w sprawach rozwodowych, o podział majątku i opiekę nad dziećmi."
+        )
+
+    return f"""<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Adwokat rozwodowy Warszawa — Kancelaria Magdalena Idzik-Cieśla. Rozwód, podział majątku, opieka nad dziećmi. Bezpłatna konsultacja 30 minut. Tel. 605 089 552.">
+  <meta name="description" content="Adwokat rozwodowy {d['name']} — Kancelaria Magdalena Idzik-Cieśla. Rozwód, podział majątku, opieka nad dziećmi. Bezpłatna konsultacja 30 minut. Tel. 605 089 552.">
   <meta name="robots" content="index, follow">
-  <title>Adwokat Rozwodowy Warszawa | Kancelaria Idzik-Cieśla</title>
-  <link rel="canonical" href="https://rozwod.waw.pl">
+  <title>Adwokat Rozwodowy {d['name']} | Kancelaria Idzik-Cieśla</title>
+  <link rel="canonical" href="{d['url']}">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Adwokat Rozwodowy Warszawa | Kancelaria Idzik-Cieśla">
-  <meta property="og:description" content="Dyskretna i skuteczna pomoc prawna w sprawach rodzinnych. Bezpłatna konsultacja 30 minut.">
+  <meta property="og:title" content="Adwokat Rozwodowy {d['name']} | Kancelaria Idzik-Cieśla">
+  <meta property="og:description" content="Dyskretna i skuteczna pomoc prawna w sprawach rodzinnych na {d['name']}. Bezpłatna konsultacja 30 minut.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rozwod.waw.pl">
+  <meta property="og:url" content="{d['url']}">
 
-  <!-- ══════════════════════════════════════════════
-       KONFIGURACJA DOMENY
-       Na każdej podstronie zmień poniższe wartości.
-       ══════════════════════════════════════════════ -->
   <script>
-    window.SITE_CONFIG = {
-      district:     "Warszawa",          // wyświetlana nazwa
-      districtKey:  "warszawa",          // klucz do podkreślenia w tickerze
-      accentColor:  "#8B5E1A",           // kolor akcentu (złoty = główna domena)
-      accentLight:  "#C49A3C",
-      accentBg:     "#FDF6E9"
-    };
+    window.SITE_CONFIG = {{
+      district:     "{d['name']}",
+      districtKey:  "{d['key']}",
+      accentColor:  "{d['accent']}",
+      accentLight:  "{d['accent_light']}",
+      accentBg:     "{d['accent_bg']}"
+    }};
   </script>
 
-  <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
-  {
+  {{
     "@context": "https://schema.org",
     "@type": "LegalService",
     "name": "Kancelaria Adwokacka Magdalena Idzik-Cieśla",
-    "description": "Adwokat rozwodowy Warszawa — pomoc prawna w sprawach rozwodowych, podziału majątku i opieki nad dziećmi.",
-    "url": "https://rozwod.waw.pl",
+    "description": "Adwokat rozwodowy {d['name']} — pomoc prawna w sprawach rozwodowych, podziału majątku i opieki nad dziećmi.",
+    "url": "{d['url']}",
     "telephone": "+48605089552",
     "email": "kancelaria@idzik.org.pl",
-    "address": {
+    "address": {{
       "@type": "PostalAddress",
       "streetAddress": "ul. Ceramiczna 5E/79",
       "addressLocality": "Warszawa",
       "postalCode": "03-126",
       "addressCountry": "PL"
-    },
-    "areaServed": {"@type": "Place", "name": "Warszawa, Mazowieckie"},
+    }},
+    "areaServed": {{"@type": "Place", "name": "{d['name']}, Warszawa"}},
     "priceRange": "$$",
     "openingHours": "Mo-Fr 08:00-18:00"
-  }
+  }}
   </script>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Shared CSS -->
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════
-     TICKER — pasek z dzielnicami
-════════════════════════════════════════════════ -->
 <div class="ticker-wrap" aria-label="Obszary działania kancelarii">
-  <div class="ticker-track" id="ticker-track">
-    <!-- wypełniane przez page.js -->
-  </div>
+  <div class="ticker-track" id="ticker-track"></div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     NAWIGACJA
-════════════════════════════════════════════════ -->
 <header class="nav">
   <div class="nav-inner">
-    <a href="/" class="nav-logo" aria-label="Strona główna">
+    <a href="{d['url']}" class="nav-logo" aria-label="Strona główna">
       <span class="nav-logo-name">Kancelaria Adwokacka</span>
       <span class="nav-logo-sub">Magdalena Idzik‑Cieśla</span>
     </a>
-
     <nav class="nav-links nav-desktop" id="nav-desktop" aria-label="Nawigacja główna">
-      <a href="#pomoc"    class="nav-link">Zakres pomocy</a>
-      <a href="#proces"   class="nav-link">Jak działamy</a>
-      <a href="#opinie"   class="nav-link">Opinie</a>
-      <a href="#faq"      class="nav-link">FAQ</a>
-      <a href="#kontakt"  class="btn nav-cta">Bezpłatna konsultacja</a>
+      <a href="#pomoc"   class="nav-link">Zakres pomocy</a>
+      <a href="#proces"  class="nav-link">Jak działamy</a>
+      <a href="#opinie"  class="nav-link">Opinie</a>
+      <a href="#faq"     class="nav-link">FAQ</a>
+      <a href="#kontakt" class="btn nav-cta">Bezpłatna konsultacja</a>
     </nav>
-
     <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<!-- ═══════════════════════════════════════════════
-     HERO — 2 kolumny: wideo (lewo) + tekst (prawo)
-════════════════════════════════════════════════ -->
 <main>
+
+<!-- HERO -->
 <section class="hero section" style="padding-top:clamp(4rem,8vw,6rem);padding-bottom:clamp(3rem,6vw,5rem);background:var(--bg);">
   <div class="container">
     <div class="hero-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;">
-
-      <!-- LEWA: tekst -->
       <div>
         <p class="hero-eyebrow" style="justify-content:flex-start;">
           <span class="hero-eyebrow-dot"></span>
-          Kancelaria Adwokacka · Warszawa
+          Kancelaria Adwokacka · {d['name']}
         </p>
-
         <h1 style="text-align:left;margin:0 0 1.25rem;font-size:clamp(1.9rem,3.2vw,2.9rem);">
           Skuteczna pomoc prawna<br>w <em>najtrudniejszym</em> momencie
         </h1>
-
         <p class="hero-sub" style="text-align:left;margin:0 0 2rem;max-width:100%;">
           Rozwód, podział majątku, opieka nad dziećmi — przeprowadzimy Cię przez cały
           proces jasno, dyskretnie i po Twojej stronie.
         </p>
-
         <div class="hero-actions" style="justify-content:flex-start;margin-bottom:2rem;">
-          <a href="#kontakt" class="btn btn-primary btn-lg">
-            Umów bezpłatną konsultację →
-          </a>
-          <a href="tel:+48605089552" class="btn btn-outline btn-lg">
-            📞 605 089 552
-          </a>
+          <a href="#kontakt" class="btn btn-primary btn-lg">Umów bezpłatną konsultację →</a>
+          <a href="tel:+48605089552" class="btn btn-outline btn-lg">📞 605 089 552</a>
         </div>
-
         <div class="hero-trust" style="justify-content:flex-start;flex-direction:column;align-items:flex-start;gap:.6rem;">
           <span class="hero-trust-item">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M12 3L5.5 10 2 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -138,7 +261,7 @@
           </span>
           <span class="hero-trust-item">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M12 3L5.5 10 2 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            Warszawa i Mazowieckie
+            {d['name']} i okolice · Warszawa
           </span>
           <span class="hero-trust-item">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M12 3L5.5 10 2 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -146,17 +269,11 @@
           </span>
         </div>
       </div>
-
-      <!-- PRAWA: wideo rozciągnięte na pełną wysokość kolumny -->
       <div style="position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);background:var(--navy);align-self:stretch;min-height:320px;">
-        <video
-          id="hero-video"
+        <video id="hero-video"
           src="https://github.com/user-attachments/assets/7c593bf7-b8ff-47d8-af33-d6ca0661c832"
-          playsinline
-          controls
-          preload="metadata"
-          style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;"
-        ></video>
+          playsinline controls preload="metadata"
+          style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;"></video>
         <div id="video-overlay" onclick="playVideo()" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .3s;background:rgba(15,31,56,.42);z-index:1;">
           <div id="play-btn" style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.13);backdrop-filter:blur(12px);border:1.5px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="margin-left:4px"><path d="M8 5v14l11-7z"/></svg>
@@ -164,14 +281,11 @@
           <p style="margin-top:1rem;font-family:var(--serif);font-size:.95rem;font-style:italic;color:rgba(255,255,255,.85);letter-spacing:.02em;">Posłuchaj o kancelarii</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     STATYSTYKI
-════════════════════════════════════════════════ -->
+<!-- STATYSTYKI -->
 <div class="stats-bar">
   <div class="container">
     <div class="stats-inner">
@@ -195,9 +309,7 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     PASEK LOKALIZACJI
-════════════════════════════════════════════════ -->
+<!-- PASEK LOKALIZACJI -->
 <div class="location-strip">
   <div class="container">
     <div class="location-strip-inner">
@@ -209,17 +321,33 @@
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         ul. Bolkowska 2A/28, Warszawa
       </span>
-      <span class="location-chip">
+      <span class="location-chip" style="font-weight:600;color:var(--accent);">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        Legionowo · Łomianki · online
+        {d['name']} · online
       </span>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     PROBLEMY / PAIN POINTS
-════════════════════════════════════════════════ -->
+<!-- SEKCJA LOKALNA SEO -->
+<div style="background:var(--accent-bg);padding:2.25rem 0;border-bottom:1px solid rgba(0,0,0,.06);">
+  <div class="container">
+    <div style="max-width:760px;margin:0 auto;text-align:center;">
+      <h2 style="font-size:clamp(1.15rem,2vw,1.4rem);margin:0 0 .65rem;font-family:var(--serif);">
+        Adwokat rozwodowy <strong>{d['name']}</strong> — pomoc prawna blisko Ciebie
+      </h2>
+      <p style="color:var(--text-muted);font-size:.93rem;line-height:1.75;margin:0;">
+        Obsługujemy klientów z <strong>{d['name']}</strong> i sąsiednich osiedli:
+        <strong>{d['neighborhoods']}</strong>.
+        Sprawy rodzinne i rozwodowe prowadzimy przed <strong>{d['court']}</strong>
+        ({d['court_addr']}). Oferujemy konsultacje stacjonarne w Warszawie
+        oraz online — bez konieczności dojazdów.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEMY -->
 <section class="section" id="pomoc">
   <div class="container">
     <div class="pain-grid">
@@ -263,22 +391,19 @@
           </div>
         </div>
       </div>
-
       <div>
         <div class="pain-quote-block">
           <blockquote>
             „Kiedy trafiłam do kancelarii, czułam się całkowicie zagubiona. Pani mecenas spokojnie wyjaśniła mi każdy krok. Po raz pierwszy od miesięcy poczułam, że mam kogoś po swojej stronie."
           </blockquote>
-          <cite>— Klientka kancelarii, Warszawa 2024</cite>
+          <cite>— Klientka kancelarii, {d['name']} 2024</cite>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     USŁUGI
-════════════════════════════════════════════════ -->
+<!-- USŁUGI -->
 <section class="section" style="background: var(--bg-card);">
   <div class="container">
     <div class="section-header section-center text-center">
@@ -321,9 +446,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     PROCES
-════════════════════════════════════════════════ -->
+<!-- PROCES -->
 <section class="section process-section" id="proces">
   <div class="container">
     <div class="section-header section-center text-center">
@@ -356,9 +479,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     OPINIE
-════════════════════════════════════════════════ -->
+<!-- OPINIE -->
 <section class="section" id="opinie">
   <div class="container">
     <div class="section-header section-center text-center">
@@ -379,23 +500,23 @@
       </div>
       <div class="testimonial">
         <div class="t-stars">★★★★★</div>
-        <p class="t-quote">„Bałam się, że stracę kontakt z dziećmi. Pani mecenas skutecznie zawalczyła o moje prawa. Warunki, które ustaliliśmy, są dobre dla całej rodziny. Jestem bardzo wdzięczna."</p>
+        <p class="t-quote">„{d['t_quote']}"</p>
         <div class="t-author">
-          <div class="t-avatar">AW</div>
+          <div class="t-avatar">{d['t_ini']}</div>
           <div>
-            <div class="t-name">Anna W.</div>
-            <div class="t-meta">Opieka nad dziećmi · Legionowo</div>
+            <div class="t-name">{d['t_name']}</div>
+            <div class="t-meta">{d['t_topic']}</div>
           </div>
         </div>
       </div>
       <div class="testimonial">
         <div class="t-stars">★★★★★</div>
-        <p class="t-quote">„Sprawny kontakt, zawsze dostępni gdy potrzebowałem odpowiedzi. Podział majątku zakończony szybciej niż myślałem. Merytoryczna pomoc na każdym etapie."</p>
+        <p class="t-quote">„Sprawny kontakt, zawsze dostępni gdy potrzebowałem odpowiedzi. Każde pytanie wyjaśnione na bieżąco. Merytoryczna pomoc na każdym etapie."</p>
         <div class="t-author">
-          <div class="t-avatar">PT</div>
+          <div class="t-avatar">JN</div>
           <div>
-            <div class="t-name">Piotr T.</div>
-            <div class="t-meta">Podział majątku · Łomianki</div>
+            <div class="t-name">Jacek N.</div>
+            <div class="t-meta">Podział majątku · Warszawa</div>
           </div>
         </div>
       </div>
@@ -403,9 +524,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     FAQ
-════════════════════════════════════════════════ -->
+<!-- FAQ -->
 <section class="section faq-section" id="faq">
   <div class="container">
     <div class="faq-layout">
@@ -417,8 +536,16 @@
         </p>
         <a href="tel:+48605089552" class="btn btn-primary">📞 605 089 552</a>
       </div>
-
       <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-btn">
+            Który sąd rozpatruje sprawy rozwodowe z {d['name']}?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-body">
+            <p>{court_faq}</p>
+          </div>
+        </div>
         <div class="faq-item">
           <button class="faq-btn">
             Ile trwa sprawa rozwodowa w Polsce?
@@ -461,16 +588,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-body">
-            <p>Tak. Prowadzimy konsultacje przez Teams, Zoom lub telefon dla klientów z całej Polski. Stacjonarnie przyjmujemy przy ul. Ceramicznej 5E/79 oraz ul. Bolkowskiej 2A/28 w Warszawie. Pierwsza konsultacja 30 minut jest zawsze bezpłatna.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-btn">
-            Jak wygląda pierwsza wizyta?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-body">
-            <p>30 minut, bez stresu i bez zobowiązań. Słuchamy — opowiadasz o swojej sytuacji własnymi słowami. Odpowiadamy na najważniejsze pytania i oceniamy Twoje możliwości. Nie musisz przynosić żadnych dokumentów na pierwsze spotkanie.</p>
+            <p>Tak. Prowadzimy konsultacje przez Teams, Zoom lub telefon dla klientów z całej Polski, w tym z {d['name']} i okolic. Stacjonarnie przyjmujemy przy ul. Ceramicznej 5E/79 oraz ul. Bolkowskiej 2A/28 w Warszawie. Pierwsza konsultacja 30 minut jest zawsze bezpłatna.</p>
           </div>
         </div>
       </div>
@@ -478,9 +596,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     KONTAKT / FORMULARZ
-════════════════════════════════════════════════ -->
+<!-- KONTAKT -->
 <section class="contact-section" id="kontakt">
   <div class="container">
     <div class="section-header section-center text-center">
@@ -491,30 +607,12 @@
         Resztą zajmiemy się my.
       </p>
     </div>
-
-    <!-- ══════════════════════════════════════════
-         FORMULARZ → FORMSPREE
-         1. Zarejestruj się na formspree.io
-         2. Utwórz formularz dla kancelaria@idzik.org.pl
-         3. Zastąp {TWOJE_ID} identyfikatorem z Formspree
-         Przykład action: https://formspree.io/f/xkgwnpab
-    ═══════════════════════════════════════════ -->
-    <form
-      id="contact-form"
-      action="https://formspree.io/f/mkokeava"
-      method="POST"
-      class="form-card"
-    >
-      <!-- Pole ukryte: przekierowanie po wysłaniu -->
-      <input type="hidden" name="_next" value="https://rozwod.waw.pl/dziekujemy.html">
-      <!-- Temat e-maila -->
-      <input type="hidden" name="_subject" value="Nowe zapytanie z rozwod.waw.pl">
-      <!-- Honeypot antyspamowy -->
+    <form id="contact-form" action="https://formspree.io/f/mkokeava" method="POST" class="form-card">
+      <input type="hidden" name="_next" value="{d['url']}/dziekujemy.html">
+      <input type="hidden" name="_subject" value="Nowe zapytanie z {d['domain']}">
       <input type="text" name="_gotcha" style="display:none">
-
       <div class="form-card-title">Umów bezpłatną konsultację</div>
       <p class="form-card-sub">Oddzwonimy w ciągu 2 godzin w dni robocze (8:00–18:00).</p>
-
       <div class="form-row">
         <div class="form-group">
           <label for="imie">Imię *</label>
@@ -525,12 +623,10 @@
           <input type="tel" id="tel" name="telefon" placeholder="+48 605 089 552" required autocomplete="tel">
         </div>
       </div>
-
       <div class="form-group">
         <label for="email">E-mail</label>
         <input type="email" id="email" name="email" placeholder="jan@example.com" autocomplete="email">
       </div>
-
       <div class="form-group">
         <label for="temat">Czego dotyczy sprawa? *</label>
         <select id="temat" name="temat" required>
@@ -543,30 +639,21 @@
           <option>Inne</option>
         </select>
       </div>
-
       <div class="form-group">
         <label for="wiadomosc">Krótki opis sytuacji (opcjonalnie)</label>
         <textarea id="wiadomosc" name="wiadomosc" placeholder="W kilku zdaniach opisz swoją sytuację..."></textarea>
       </div>
-
-      <button type="submit" class="form-submit">
-        Wyślij i umów konsultację →
-      </button>
-
+      <button type="submit" class="form-submit">Wyślij i umów konsultację →</button>
       <p class="form-notice">
         🔒 Dane są bezpieczne i chronione. Kontaktując się z kancelarią, wyrażasz zgodę
         na przetwarzanie danych osobowych w celu obsługi zapytania.
       </p>
-
-      <!-- Stan po wysłaniu (ukryty domyślnie) -->
       <div id="form-success" style="display:none; text-align:center; padding:1.5rem 0;">
         <div style="font-size:2rem; margin-bottom:.75rem;">✅</div>
         <div style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--navy);margin-bottom:.4rem;">Dziękujemy!</div>
         <p style="font-size:.9rem;color:var(--text-muted);font-weight:300;">Oddzwonimy do Ciebie w ciągu 2 godzin w dni robocze.</p>
       </div>
     </form>
-
-    <!-- Alternatywny kontakt -->
     <div style="text-align:center; margin-top:2.5rem; display:flex; gap:2rem; justify-content:center; flex-wrap:wrap;">
       <a href="tel:+48605089552" class="btn btn-white btn-lg">📞 605 089 552</a>
       <a href="mailto:kancelaria@idzik.org.pl" class="btn btn-white btn-lg">✉ kancelaria@idzik.org.pl</a>
@@ -575,9 +662,7 @@
 </section>
 </main>
 
-<!-- ═══════════════════════════════════════════════
-     STOPKA
-════════════════════════════════════════════════ -->
+<!-- STOPKA -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -585,7 +670,7 @@
         <div class="footer-brand">Kancelaria Adwokacka Magdalena Idzik‑Cieśla</div>
         <p class="footer-tagline">
           Dyskretna i skuteczna pomoc prawna w sprawach rodzinnych.
-          Warszawa i Mazowieckie — od ponad 12 lat.
+          {d['name']} · Warszawa i Mazowieckie — od ponad 12 lat.
         </p>
         <div class="footer-contact">
           <a href="tel:+48605089552">📞 605 089 552</a>
@@ -615,16 +700,7 @@
       <div class="footer-col">
         <h5>Inne domeny</h5>
         <ul>
-          <li><a href="https://rozwodbemowo.pl">Bemowo</a></li>
-          <li><a href="https://rozwodbielany.pl">Bielany</a></li>
-          <li><a href="https://rozwodzoliborz.pl">Żoliborz</a></li>
-          <li><a href="https://rozwodwola.pl">Wola</a></li>
-          <li><a href="https://rozwodochota.pl">Ochota</a></li>
-          <li><a href="https://rozwodmokotow.pl">Mokotów</a></li>
-          <li><a href="https://rozwodtarchomin.pl">Tarchomin</a></li>
-          <li><a href="https://rozwodlegionowo.pl">Legionowo</a></li>
-          <li><a href="https://rozwodlomianki.pl">Łomianki</a></li>
-          <li><a href="https://rozwodjablonna.pl">Jabłonna</a></li>
+{footer}
         </ul>
       </div>
     </div>
@@ -641,36 +717,46 @@
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════
-     SKRYPTY
-════════════════════════════════════════════════ -->
-<!-- anime.js z CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-<!-- Wspólny skrypt kancelarii -->
-<script src="assets/page.js"></script>
-
+<script src="../assets/page.js"></script>
 <script>
-function playVideo() {
+function playVideo() {{
   const video   = document.getElementById('hero-video');
   const overlay = document.getElementById('video-overlay');
   video.play();
-  anime({ targets: overlay, opacity: [1, 0], duration: 400, easing: 'easeOutCubic',
-    complete: () => { overlay.style.display = 'none'; } });
-}
-document.addEventListener('DOMContentLoaded', () => {
+  anime({{ targets: overlay, opacity: [1, 0], duration: 400, easing: 'easeOutCubic',
+    complete: () => {{ overlay.style.display = 'none'; }} }});
+}}
+document.addEventListener('DOMContentLoaded', () => {{
   const video   = document.getElementById('hero-video');
   const overlay = document.getElementById('video-overlay');
   if (!video) return;
-  video.addEventListener('ended', () => {
+  video.addEventListener('ended', () => {{
     overlay.style.display = 'flex';
-    anime({ targets: overlay, opacity: [0, 1], duration: 400, easing: 'easeOutCubic' });
-  });
+    anime({{ targets: overlay, opacity: [0, 1], duration: 400, easing: 'easeOutCubic' }});
+  }});
   const btn = document.getElementById('play-btn');
-  if (btn) {
-    btn.addEventListener('mouseover', () => { btn.style.transform = 'scale(1.1)'; btn.style.background = 'rgba(255,255,255,.22)'; });
-    btn.addEventListener('mouseout',  () => { btn.style.transform = 'scale(1)';   btn.style.background = 'rgba(255,255,255,.12)'; });
-  }
-});
+  if (btn) {{
+    btn.addEventListener('mouseover', () => {{ btn.style.transform = 'scale(1.1)'; btn.style.background = 'rgba(255,255,255,.22)'; }});
+    btn.addEventListener('mouseout',  () => {{ btn.style.transform = 'scale(1)';   btn.style.background = 'rgba(255,255,255,.12)'; }});
+  }}
+}});
 </script>
 </body>
-</html>
+</html>"""
+
+
+def main():
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    for d in DISTRICTS:
+        out_dir = os.path.join(base_dir, d["key"])
+        os.makedirs(out_dir, exist_ok=True)
+        out_path = os.path.join(out_dir, "index.html")
+        with open(out_path, "w", encoding="utf-8") as f:
+            f.write(build_page(d))
+        print(f"✓  {d['key']}/index.html  ({d['domain']})")
+    print(f"\nWygenerowano {len(DISTRICTS)} stron.")
+
+
+if __name__ == "__main__":
+    main()

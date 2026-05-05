@@ -26,6 +26,7 @@ const SITE_CONFIG = window.SITE_CONFIG || {
 /* ── LISTA DZIELNIC / DOMEN ────────────────────────────────── */
 const DISTRICTS = [
   { name: "Warszawa",   url: "https://rozwod.waw.pl",          key: "warszawa" },
+  { name: "Bemowo",     url: "https://rozwodbemowo.pl",         key: "bemowo" },
   { name: "Bielany",    url: "https://rozwodbielany.pl",        key: "bielany" },
   { name: "Żoliborz",   url: "https://rozwodzoliborz.pl",       key: "zoliborz" },
   { name: "Wola",       url: "https://rozwodwola.pl",           key: "wola" },
