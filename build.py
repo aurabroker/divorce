@@ -6,6 +6,7 @@ Tworzy: {klucz}/index.html dla każdej domeny (assets: ../assets/)
 """
 
 import os
+import shutil
 
 DISTRICTS = [
     dict(
@@ -201,7 +202,7 @@ def build_page(d):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
@@ -718,7 +719,7 @@ def build_page(d):
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-<script src="../assets/page.js"></script>
+<script src="assets/page.js"></script>
 <script>
 function playVideo() {{
   const video   = document.getElementById('hero-video');
@@ -767,7 +768,7 @@ def build_dziekujemy(d):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <div class="ticker-wrap" aria-label="Obszary działania kancelarii">
@@ -803,7 +804,7 @@ def build_dziekujemy(d):
 </section>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-<script src="../assets/page.js"></script>
+<script src="assets/page.js"></script>
 </body>
 </html>"""
 
@@ -832,9 +833,17 @@ def build_sitemap(d, lastmod="2026-05-05"):
 
 def main():
     base_dir = os.path.dirname(os.path.abspath(__file__))
+    assets_src = os.path.join(base_dir, "assets")
+
     for d in DISTRICTS:
         out_dir = os.path.join(base_dir, d["key"])
         os.makedirs(out_dir, exist_ok=True)
+
+        # Kopiuj assets/ do folderu domeny (nadpisuj)
+        assets_dst = os.path.join(out_dir, "assets")
+        if os.path.exists(assets_dst):
+            shutil.rmtree(assets_dst)
+        shutil.copytree(assets_src, assets_dst)
 
         files = {
             "index.html":       build_page(d),
@@ -847,7 +856,7 @@ def main():
                 f.write(content)
 
         print(f"✓  {d['key']}/  ({d['domain']})")
-    print(f"\nWygenerowano {len(DISTRICTS)} domen × 4 pliki.")
+    print(f"\nWygenerowano {len(DISTRICTS)} domen × 4 pliki + assets/.")
 
 
 if __name__ == "__main__":
