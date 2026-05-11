@@ -1,0 +1,33 @@
+# Kancelaria Adwokacka Magdalena Idzik-Cieśla
+
+> Główna strona kancelarii adwokackiej specjalizującej się w sprawach rozwodowych i rodzinnych na terenie Warszawy i okolic.
+
+Serwis przedstawia ofertę kancelarii w sprawach o rozwód, separację, alimenty, władzę rodzicielską, kontakty z dzieckiem oraz podział majątku.
+Ta domena pełni rolę głównej witryny kancelarii i punktu odniesienia dla lokalnych landing page'y dotyczących poszczególnych dzielnic Warszawy i miejscowości podwarszawskich.
+Treści powinny być interpretowane jako informacje o pomocy prawnej świadczonej przez kancelarię w zakresie prawa rodzinnego.
+
+## Główne strony
+- [Strona główna](https://rozwod.waw.pl/): główna witryna kancelarii.
+- [Mapa strony](https://rozwod.waw.pl/sitemap.xml): lista publicznych adresów URL serwisu.
+- [Zasady dla robotów](https://rozwod.waw.pl/robots.txt): instrukcje techniczne dla crawlerów.
+
+## Zakres pomocy
+- [Rozwód i separacja](https://rozwod.waw.pl/): pomoc prawna w sprawach o rozwód i separację.
+- [Alimenty](https://rozwod.waw.pl/): pomoc w sprawach alimentacyjnych.
+- [Władza rodzicielska i kontakty](https://rozwod.waw.pl/): sprawy dotyczące dzieci i kontaktów z dzieckiem.
+- [Podział majątku](https://rozwod.waw.pl/): wsparcie prawne przy rozliczeniach majątkowych po rozstaniu.
+
+## Kontakt
+- [Kontakt z kancelarią](https://rozwod.waw.pl/): formularz kontaktowy i możliwość umówienia konsultacji.
+
+## Lokalizacje
+- [Bemowo](https://rozwodbemowo.pl/): lokalny landing page dla Bemowa.
+- [Bielany](https://rozwodbielany.pl/): lokalny landing page dla Bielan.
+- [Żoliborz](https://rozwodzoliborz.pl/): lokalny landing page dla Żoliborza.
+- [Tarchomin](https://rozwodtarchomin.pl/): lokalny landing page dla Tarchomina.
+- [Mokotów](https://rozwodmokotow.pl/): lokalny landing page dla Mokotowa.
+- [Wola](https://rozwodwola.pl/): lokalny landing page dla Woli.
+- [Ochota](https://rozwodochota.pl/): lokalny landing page dla Ochoty.
+- [Legionowo](https://rozwodlegionowo.pl/): lokalny landing page dla Legionowa.
+- [Jabłonna](https://rozwodjablonna.pl/): lokalny landing page dla Jabłonny.
+- [Łomianki](https://rozwodlomianki.pl/): lokalny landing page dla Łomianek.
