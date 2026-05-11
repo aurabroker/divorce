@@ -1,0 +1,24 @@
+# Kancelaria Adwokacka Magdalena Idzik-Cieśla
+
+> Lokalny landing page kancelarii adwokackiej specjalizującej się w sprawach rozwodowych i rodzinnych dla klientów z Jabłonny i okolic.
+
+Serwis przedstawia zakres pomocy kancelarii dla osób z Jabłonny, które potrzebują wsparcia w sprawach rozwodowych i rodzinnych.
+Strona obejmuje informacje dotyczące rozwodu, alimentów, kontaktów z dzieckiem, władzy rodzicielskiej i podziału majątku.
+Celem serwisu jest ułatwienie kontaktu z kancelarią i szybkie wskazanie głównych obszarów pomocy prawnej.
+
+## Główne strony
+- [Strona główna](https://rozwodjablonna.pl/): lokalny landing page kancelarii.
+- [Mapa strony](https://rozwodjablonna.pl/sitemap.xml): lista publicznych adresów URL serwisu.
+- [Zasady dla robotów](https://rozwodjablonna.pl/robots.txt): instrukcje techniczne dla crawlerów.
+
+## Zakres pomocy
+- [Rozwód i separacja](https://rozwodjablonna.pl/): pomoc prawna w sprawach rozwodowych.
+- [Alimenty](https://rozwodjablonna.pl/): wsparcie w sprawach alimentacyjnych.
+- [Władza rodzicielska i kontakty](https://rozwodjablonna.pl/): sprawy dotyczące dzieci i relacji rodzinnych.
+- [Podział majątku](https://rozwodjablonna.pl/): pomoc przy rozliczeniach majątkowych po rozstaniu.
+
+## Kontakt
+- [Kontakt z kancelarią](https://rozwodjablonna.pl/): formularz kontaktowy i możliwość umówienia konsultacji.
+
+## Optional
+- [Główna witryna kancelarii](https://rozwod.waw.pl/): centralna strona kancelarii obejmująca Warszawę i okolice.
