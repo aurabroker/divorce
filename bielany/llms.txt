@@ -1,0 +1,24 @@
+# Kancelaria Adwokacka Magdalena Idzik-Cieśla
+
+> Lokalny landing page kancelarii adwokackiej specjalizującej się w sprawach rozwodowych i rodzinnych dla klientów z Bielan i okolic.
+
+Serwis prezentuje ofertę pomocy prawnej dla osób szukających wsparcia adwokata w sprawach rodzinnych i rozwodowych na Bielanach.
+Opisane obszary obejmują rozwód, alimenty, władzę rodzicielską, kontakty z dzieckiem i podział majątku.
+Celem strony jest przekazanie najważniejszych informacji oraz umożliwienie szybkiego kontaktu z kancelarią.
+
+## Główne strony
+- [Strona główna](https://rozwodbielany.pl/): lokalny landing page kancelarii.
+- [Mapa strony](https://rozwodbielany.pl/sitemap.xml): lista publicznych adresów URL serwisu.
+- [Zasady dla robotów](https://rozwodbielany.pl/robots.txt): instrukcje techniczne dla crawlerów.
+
+## Zakres pomocy
+- [Rozwód i separacja](https://rozwodbielany.pl/): pomoc w sprawach o rozwód i separację.
+- [Alimenty](https://rozwodbielany.pl/): wsparcie w sprawach alimentacyjnych.
+- [Władza rodzicielska i kontakty](https://rozwodbielany.pl/): pomoc w sprawach dotyczących dzieci.
+- [Podział majątku](https://rozwodbielany.pl/): wsparcie przy podziale majątku po rozstaniu.
+
+## Kontakt
+- [Kontakt z kancelarią](https://rozwodbielany.pl/): formularz kontaktowy i dane do konsultacji.
+
+## Optional
+- [Główna witryna kancelarii](https://rozwod.waw.pl/): centralna strona kancelarii obejmująca Warszawę i okolice.
