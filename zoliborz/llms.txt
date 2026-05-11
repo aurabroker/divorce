@@ -1,0 +1,24 @@
+# Kancelaria Adwokacka Magdalena Idzik-Cieśla
+
+> Lokalny landing page kancelarii adwokackiej specjalizującej się w sprawach rozwodowych i rodzinnych dla klientów z Żoliborza i okolic.
+
+Serwis zawiera podstawowe informacje o pomocy prawnej w sprawach rozwodowych i rodzinnych dla osób z Żoliborza.
+Zakres pomocy obejmuje rozwód, separację, alimenty, sprawy dotyczące dzieci oraz podział majątku.
+Strona ma charakter informacyjny i kontaktowy.
+
+## Główne strony
+- [Strona główna](https://rozwodzoliborz.pl/): lokalny landing page kancelarii.
+- [Mapa strony](https://rozwodzoliborz.pl/sitemap.xml): lista publicznych adresów URL serwisu.
+- [Zasady dla robotów](https://rozwodzoliborz.pl/robots.txt): instrukcje techniczne dla crawlerów.
+
+## Zakres pomocy
+- [Rozwód i separacja](https://rozwodzoliborz.pl/): pomoc w sprawach rozwodowych i rodzinnych.
+- [Alimenty](https://rozwodzoliborz.pl/): pomoc w dochodzeniu, zmianie lub obronie roszczeń alimentacyjnych.
+- [Władza rodzicielska i kontakty](https://rozwodzoliborz.pl/): wsparcie w sprawach związanych z dziećmi.
+- [Podział majątku](https://rozwodzoliborz.pl/): pomoc przy rozliczeniach majątkowych po rozwodzie.
+
+## Kontakt
+- [Kontakt z kancelarią](https://rozwodzoliborz.pl/): formularz kontaktowy i możliwość umówienia konsultacji.
+
+## Optional
+- [Główna witryna kancelarii](https://rozwod.waw.pl/): centralna strona kancelarii obejmująca Warszawę i okolice.
