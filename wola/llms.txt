@@ -1,0 +1,24 @@
+# Kancelaria Adwokacka Magdalena Idzik-Cieśla
+
+> Lokalny landing page kancelarii adwokackiej specjalizującej się w sprawach rozwodowych i rodzinnych dla klientów z Woli i okolic.
+
+Serwis zawiera informacje o zakresie pomocy prawnej kancelarii dla osób z Woli poszukujących wsparcia w sprawach rodzinnych i rozwodowych.
+Opisane obszary obejmują rozwód, separację, alimenty, władzę rodzicielską, kontakty z dzieckiem oraz podział majątku.
+Strona ma umożliwić szybkie zapoznanie się z ofertą i kontakt z kancelarią.
+
+## Główne strony
+- [Strona główna](https://rozwodwola.pl/): lokalny landing page kancelarii.
+- [Mapa strony](https://rozwodwola.pl/sitemap.xml): lista publicznych adresów URL serwisu.
+- [Zasady dla robotów](https://rozwodwola.pl/robots.txt): instrukcje techniczne dla crawlerów.
+
+## Zakres pomocy
+- [Rozwód i separacja](https://rozwodwola.pl/): pomoc prawna w sprawach rozwodowych i rodzinnych.
+- [Alimenty](https://rozwodwola.pl/): wsparcie w sprawach alimentacyjnych.
+- [Władza rodzicielska i kontakty](https://rozwodwola.pl/): sprawy związane z dziećmi i relacjami rodzinnymi.
+- [Podział majątku](https://rozwodwola.pl/): pomoc przy sprawach majątkowych po rozstaniu.
+
+## Kontakt
+- [Kontakt z kancelarią](https://rozwodwola.pl/): formularz kontaktowy i możliwość umówienia konsultacji.
+
+## Optional
+- [Główna witryna kancelarii](https://rozwod.waw.pl/): centralna strona kancelarii obejmująca Warszawę i okolice.
