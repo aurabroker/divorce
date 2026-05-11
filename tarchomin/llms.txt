@@ -1,0 +1,24 @@
+# Kancelaria Adwokacka Magdalena Idzik-Cieśla
+
+> Lokalny landing page kancelarii adwokackiej specjalizującej się w sprawach rozwodowych i rodzinnych dla klientów z Tarchomina i okolic.
+
+Serwis służy do przedstawienia oferty pomocy prawnej w sprawach o rozwód, separację, alimenty, kontakty z dzieckiem, władzę rodzicielską oraz podział majątku.
+Jest to lokalna wersja strony kancelarii, przygotowana dla osób szukających adwokata od spraw rodzinnych na Tarchominie.
+Treści mają charakter informacyjny i służą ułatwieniu kontaktu z kancelarią.
+
+## Główne strony
+- [Strona główna](https://rozwodtarchomin.pl/): lokalny landing page kancelarii.
+- [Mapa strony](https://rozwodtarchomin.pl/sitemap.xml): lista publicznych adresów URL serwisu.
+- [Zasady dla robotów](https://rozwodtarchomin.pl/robots.txt): instrukcje techniczne dla crawlerów.
+
+## Zakres pomocy
+- [Rozwód i separacja](https://rozwodtarchomin.pl/): pomoc prawna w sprawach rozwodowych i rodzinnych.
+- [Alimenty](https://rozwodtarchomin.pl/): wsparcie w sprawach alimentacyjnych.
+- [Władza rodzicielska i kontakty](https://rozwodtarchomin.pl/): sprawy dotyczące dzieci i kontaktów.
+- [Podział majątku](https://rozwodtarchomin.pl/): pomoc przy podziale majątku po rozstaniu.
+
+## Kontakt
+- [Kontakt z kancelarią](https://rozwodtarchomin.pl/): formularz kontaktowy i dane do umówienia konsultacji.
+
+## Optional
+- [Główna witryna kancelarii](https://rozwod.waw.pl/): centralna strona kancelarii obejmująca Warszawę i okolice.
