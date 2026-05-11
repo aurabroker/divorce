@@ -1,0 +1,24 @@
+# Kancelaria Adwokacka Magdalena Idzik-Cieśla
+
+> Lokalny landing page kancelarii adwokackiej specjalizującej się w sprawach rozwodowych i rodzinnych dla klientów z Bemowa i okolic.
+
+Serwis służy do przedstawienia oferty kancelarii dla osób z Bemowa potrzebujących pomocy prawnej w sprawach rodzinnych i rozwodowych.
+Zakres informacji obejmuje rozwód, separację, alimenty, władzę rodzicielską, kontakty z dzieckiem oraz podział majątku.
+Celem strony jest ułatwienie szybkiego kontaktu z kancelarią i przedstawienie głównych obszarów wsparcia.
+
+## Główne strony
+- [Strona główna](https://rozwodbemowo.pl/): lokalny landing page kancelarii.
+- [Mapa strony](https://rozwodbemowo.pl/sitemap.xml): lista publicznych adresów URL serwisu.
+- [Zasady dla robotów](https://rozwodbemowo.pl/robots.txt): instrukcje techniczne dla crawlerów.
+
+## Zakres pomocy
+- [Rozwód i separacja](https://rozwodbemowo.pl/): pomoc prawna w sprawach rozwodowych i rodzinnych.
+- [Alimenty](https://rozwodbemowo.pl/): wsparcie w sprawach alimentacyjnych.
+- [Władza rodzicielska i kontakty](https://rozwodbemowo.pl/): sprawy dotyczące dzieci i kontaktów.
+- [Podział majątku](https://rozwodbemowo.pl/): pomoc przy podziale majątku po rozstaniu.
+
+## Kontakt
+- [Kontakt z kancelarią](https://rozwodbemowo.pl/): formularz kontaktowy i możliwość umówienia konsultacji.
+
+## Optional
+- [Główna witryna kancelarii](https://rozwod.waw.pl/): centralna strona kancelarii obejmująca Warszawę i okolice.
