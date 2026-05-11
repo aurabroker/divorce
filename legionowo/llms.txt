@@ -1,0 +1,24 @@
+# Kancelaria Adwokacka Magdalena Idzik-Cieśla
+
+> Lokalny landing page kancelarii adwokackiej specjalizującej się w sprawach rozwodowych i rodzinnych dla klientów z Legionowa i okolic.
+
+Serwis przedstawia ofertę kancelarii dla osób potrzebujących pomocy prawnej w sprawach rozwodowych i rodzinnych w Legionowie.
+Zakres informacji obejmuje rozwód, separację, alimenty, władzę rodzicielską, kontakty z dzieckiem i podział majątku.
+Treści mają ułatwić szybkie zrozumienie zakresu pomocy i kontakt z kancelarią.
+
+## Główne strony
+- [Strona główna](https://rozwodlegionowo.pl/): lokalny landing page kancelarii.
+- [Mapa strony](https://rozwodlegionowo.pl/sitemap.xml): lista publicznych adresów URL serwisu.
+- [Zasady dla robotów](https://rozwodlegionowo.pl/robots.txt): instrukcje techniczne dla crawlerów.
+
+## Zakres pomocy
+- [Rozwód i separacja](https://rozwodlegionowo.pl/): pomoc prawna w sprawach o rozwód i separację.
+- [Alimenty](https://rozwodlegionowo.pl/): pomoc w sprawach alimentacyjnych.
+- [Władza rodzicielska i kontakty](https://rozwodlegionowo.pl/): wsparcie w sprawach dotyczących dzieci.
+- [Podział majątku](https://rozwodlegionowo.pl/): pomoc przy sprawach majątkowych po rozstaniu.
+
+## Kontakt
+- [Kontakt z kancelarią](https://rozwodlegionowo.pl/): formularz kontaktowy i możliwość umówienia konsultacji.
+
+## Optional
+- [Główna witryna kancelarii](https://rozwod.waw.pl/): centralna strona kancelarii obejmująca Warszawę i okolice.
