@@ -428,12 +428,12 @@ def build_robots(d: dict) -> str:
         User-agent: GoogleOther
         Allow: /
 
-        # ─── AI TRAINING (blokujemy — nie chcemy oddawać treści do trenowania) ─
+        # ─── AI TRAINING ─────────────────────────────────────────────
         User-agent: GPTBot
-        Disallow: /
+        Allow: /
 
         User-agent: ClaudeBot
-        Disallow: /
+        Allow: /
 
         User-agent: Google-Extended
         Disallow: /
