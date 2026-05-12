@@ -1,24 +1,39 @@
 # Kancelaria Adwokacka Magdalena Idzik-Cieśla
 
-> Lokalny landing page kancelarii adwokackiej specjalizującej się w sprawach rozwodowych i rodzinnych dla klientów z Ochoty i okolic.
+> Adwokat rozwodowy Ochota — Kancelaria Adwokacka Magdalena Idzik-Cieśla. Pomoc prawna w sprawach rodzinnych dla klientów z Ochoty i okolic: rozwód, alimenty, opieka nad dziećmi, podział majątku. Bezpłatna konsultacja.
 
-Serwis przedstawia podstawowe informacje o pomocy prawnej świadczonej przez kancelarię dla osób z Ochoty.
-Zakres tematyczny obejmuje rozwód, separację, alimenty, władzę rodzicielską, kontakty z dzieckiem i podział majątku.
-Strona ma charakter informacyjny i kontaktowy.
+Lokalny landing page kancelarii dedykowany klientom z Ochoty i okolicznych osiedli: Rakowiec, Stara Ochota, Szczęśliwice, Filtry.
+Sprawy dla klientów z Ochoty są prowadzone przed Sąd Okręgowy w Warszawie, al. Solidarności 127, Warszawa.
+Kancelaria oferuje konsultacje stacjonarne w Warszawie (ul. Ceramiczna 5E/79 i ul. Bolkowska 2A/28) oraz online — bez konieczności dojazdu.
+Strona służy wyłącznie do pozyskiwania zapytań i prezentacji zakresu usług. Nie zawiera treści prawniczych ani porad prawnych.
 
 ## Główne strony
-- [Strona główna](https://rozwodochota.pl/): lokalny landing page kancelarii.
-- [Mapa strony](https://rozwodochota.pl/sitemap.xml): lista publicznych adresów URL serwisu.
-- [Zasady dla robotów](https://rozwodochota.pl/robots.txt): instrukcje techniczne dla crawlerów.
+- [Strona główna](https://rozwodochota.pl/): główna publiczna strona tej domeny.
+- [Mapa strony](https://rozwodochota.pl/sitemap.xml): indeks URL w formacie XML dla crawlerów.
+- [Zasady dla robotów](https://rozwodochota.pl/robots.txt): polityka dostępu dla crawlerów AI i wyszukiwarek.
 
 ## Zakres pomocy
-- [Rozwód i separacja](https://rozwodochota.pl/): pomoc w sprawach o rozwód i separację.
-- [Alimenty](https://rozwodochota.pl/): wsparcie w sprawach alimentacyjnych.
-- [Władza rodzicielska i kontakty](https://rozwodochota.pl/): sprawy dotyczące dzieci i kontaktów.
-- [Podział majątku](https://rozwodochota.pl/): pomoc przy rozliczeniach majątkowych po rozwodzie.
+- [Rozwód i separacja](https://rozwodochota.pl/): Pozew o rozwód, reprezentacja przed sądem, negocjacje. Obsługujemy sprawy polubowne i sporne, z orzekaniem o winie i bez.
+- [Podział majątku](https://rozwodochota.pl/): Analiza majątku wspólnego, nieruchomości, firm i kredytów hipotecznych. Postępowanie sądowe lub notarialne.
+- [Opieka nad dziećmi i alimenty](https://rozwodochota.pl/): Plan wychowawczy, ustalenie kontaktów z dzieckiem, dochodzenie lub zmiana alimentów. Priorytetem jest dobro dzieci.
+- [Władza rodzicielska](https://rozwodochota.pl/): Ograniczenie, zawieszenie lub pozbawienie władzy rodzicielskiej. Zmiana dotychczasowych ustaleń sądowych.
+- [Separacja prawna](https://rozwodochota.pl/): Orzeczenie separacji jako etap poprzedzający rozwód lub samodzielna instytucja prawna.
+- [Mediacja rodzinna](https://rozwodochota.pl/): Wsparcie w ugodowym zakończeniu sporu — szybciej, taniej i mniej konfliktowo niż droga sądowa.
+
+## FAQ
+- **Ile trwa sprawa rozwodowa?** — Rozwód bez orzekania o winie przy zgodzie obu stron — 3–6 miesięcy. Sporne sprawy z podziałem majątku i kwestiami dzieci — często ponad rok. Kancelaria oceni realny czas dla Twojej sprawy podczas bezpłatnej konsultacji.
+- **Ile kosztuje adwokat w sprawie rozwodowej?** — Wynagrodzenie jest ustalane indywidualnie zależnie od stopnia skomplikowania sprawy. Do tego dochodzi opłata sądowa od pozwu (600 zł) i ewentualne koszty biegłych. Pełna wycena jest przedstawiana przed podpisaniem umowy — bez ukrytych kosztów.
+- **Czy można uzyskać rozwód bez orzekania o winie?** — Tak — jeśli obie strony wyrażają zgodę, sąd orzeka rozwód bez ustalania winy. Jest to szybsze, tańsze i mniej konfliktowe rozwiązanie, często korzystniejsze dla dzieci.
+- **Co z mieszkaniem i kredytem po rozwodzie?** — Podział majątku (w tym nieruchomości i kredytów hipotecznych) może nastąpić w trakcie lub po sprawie rozwodowej. Możliwe opcje: sprzedaż i podział ceny, spłata jednego małżonka, ustanowienie współwłasności. Kancelaria omówi wszystkie scenariusze.
+- **Czy konsultacja jest bezpłatna?** — Tak — pierwsza konsultacja (30 minut) jest zawsze bezpłatna, stacjonarnie lub online (Teams/Zoom/telefon).
 
 ## Kontakt
-- [Kontakt z kancelarią](https://rozwodochota.pl/): formularz kontaktowy i dane do konsultacji.
+- [Kontakt z kancelarią](https://rozwodochota.pl/): formularz kontaktowy i możliwość umówienia konsultacji.
+- Telefon: [605 089 552](tel:+48605089552)
+- E-mail: [kancelaria@idzik.org.pl](mailto:kancelaria@idzik.org.pl)
+- Godziny pracy: poniedziałek–piątek 8:00–18:00
+- Adres 1: ul. Ceramiczna 5E/79, 03-126 Warszawa
+- Adres 2: ul. Bolkowska 2A/28, 01-466 Warszawa
 
 ## Optional
-- [Główna witryna kancelarii](https://rozwod.waw.pl/): centralna strona kancelarii obejmująca Warszawę i okolice.
+- [Główna witryna kancelarii](https://rozwod.waw.pl/): centralna strona kancelarii — pełna oferta, dane kontaktowe, wszystkie lokalizacje.

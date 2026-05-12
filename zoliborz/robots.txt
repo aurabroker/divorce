@@ -1,5 +1,80 @@
+# robots.txt — rozwodzoliborz.pl
+# Ostatnia aktualizacja: 2026-05-11
+#
+# Strategia:
+#   ✅ Zezwalamy na search/inference boty (cytowania w wynikach AI)
+#   🚫 Blokujemy training boty (ochrona treści przed użyciem do trenowania modeli)
+#
+# ─── WYSZUKIWARKI ────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+Disallow: /dziekujemy.html
+
+User-agent: Bingbot
+Allow: /
+Disallow: /dziekujemy.html
+
+# ─── AI SEARCH / INFERENCE (przepuszczamy — zależy nam na cytowaniach) ─
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# ─── AI TRAINING (blokujemy — nie chcemy oddawać treści do trenowania) ─
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+# ─── DOMYŚLNE ────────────────────────────────────────────────────
 User-agent: *
 Allow: /
 Disallow: /dziekujemy.html
 
+# ─── PLIKI AI / INDEKS ───────────────────────────────────────────
+# Explicit allow dla plików metadanych (ważne gdy masz catch-all worker)
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
+Allow: /robots.txt
+
+# ─── SITEMAP ─────────────────────────────────────────────────────
 Sitemap: https://rozwodzoliborz.pl/sitemap.xml

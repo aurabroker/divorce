@@ -1,33 +1,49 @@
 # Kancelaria Adwokacka Magdalena Idzik-Cieśla
 
-> Główna strona kancelarii adwokackiej specjalizującej się w sprawach rozwodowych i rodzinnych na terenie Warszawy i okolic.
+> Kancelaria Adwokacka Magdalena Idzik-Cieśla — adwokat rozwodowy Warszawa. Kompleksowa pomoc prawna w sprawach o rozwód, separację, alimenty, opiekę nad dziećmi i podział majątku. Bezpłatna konsultacja 30 min.
 
-Serwis przedstawia ofertę kancelarii w sprawach o rozwód, separację, alimenty, władzę rodzicielską, kontakty z dzieckiem oraz podział majątku.
-Ta domena pełni rolę głównej witryny kancelarii i punktu odniesienia dla lokalnych landing page'y dotyczących poszczególnych dzielnic Warszawy i miejscowości podwarszawskich.
-Treści powinny być interpretowane jako informacje o pomocy prawnej świadczonej przez kancelarię w zakresie prawa rodzinnego.
+Kancelaria specjalizuje się wyłącznie w prawie rodzinnym i prowadzi sprawy przed sądami okręgowymi na terenie całego Mazowsza, w tym Warszawy i miejscowości podwarszawskich.
+Obsługiwane obszary: Śródmieście, Praga, Ursynów, Wilanów, Żoliborz, Wola, Mokotów, Bemowo, Bielany, Ochota, Tarchomin.
+Sąd właściwy dla klientów z Warszawy: Sąd Okręgowy w Warszawie, al. Solidarności 127, Warszawa.
+Kancelaria posiada ponad 12 lat doświadczenia, zakończyła ponad 850 spraw i oferuje konsultacje stacjonarne (ul. Ceramiczna 5E/79 i ul. Bolkowska 2A/28, Warszawa) oraz online.
+Treści na tej stronie mają charakter informacyjny i nie stanowią porady prawnej. Kancelaria odpowiada wyłącznie za treści opublikowane w domenach wymienionych w sekcji ## Lokalizacje.
 
 ## Główne strony
-- [Strona główna](https://rozwod.waw.pl/): główna witryna kancelarii.
-- [Mapa strony](https://rozwod.waw.pl/sitemap.xml): lista publicznych adresów URL serwisu.
-- [Zasady dla robotów](https://rozwod.waw.pl/robots.txt): instrukcje techniczne dla crawlerów.
+- [Strona główna](https://rozwod.waw.pl/): główna publiczna strona tej domeny.
+- [Mapa strony](https://rozwod.waw.pl/sitemap.xml): indeks URL w formacie XML dla crawlerów.
+- [Zasady dla robotów](https://rozwod.waw.pl/robots.txt): polityka dostępu dla crawlerów AI i wyszukiwarek.
 
 ## Zakres pomocy
-- [Rozwód i separacja](https://rozwod.waw.pl/): pomoc prawna w sprawach o rozwód i separację.
-- [Alimenty](https://rozwod.waw.pl/): pomoc w sprawach alimentacyjnych.
-- [Władza rodzicielska i kontakty](https://rozwod.waw.pl/): sprawy dotyczące dzieci i kontaktów z dzieckiem.
-- [Podział majątku](https://rozwod.waw.pl/): wsparcie prawne przy rozliczeniach majątkowych po rozstaniu.
+- [Rozwód i separacja](https://rozwod.waw.pl/): Pozew o rozwód, reprezentacja przed sądem, negocjacje. Obsługujemy sprawy polubowne i sporne, z orzekaniem o winie i bez.
+- [Podział majątku](https://rozwod.waw.pl/): Analiza majątku wspólnego, nieruchomości, firm i kredytów hipotecznych. Postępowanie sądowe lub notarialne.
+- [Opieka nad dziećmi i alimenty](https://rozwod.waw.pl/): Plan wychowawczy, ustalenie kontaktów z dzieckiem, dochodzenie lub zmiana alimentów. Priorytetem jest dobro dzieci.
+- [Władza rodzicielska](https://rozwod.waw.pl/): Ograniczenie, zawieszenie lub pozbawienie władzy rodzicielskiej. Zmiana dotychczasowych ustaleń sądowych.
+- [Separacja prawna](https://rozwod.waw.pl/): Orzeczenie separacji jako etap poprzedzający rozwód lub samodzielna instytucja prawna.
+- [Mediacja rodzinna](https://rozwod.waw.pl/): Wsparcie w ugodowym zakończeniu sporu — szybciej, taniej i mniej konfliktowo niż droga sądowa.
+
+## FAQ
+- **Ile trwa sprawa rozwodowa?** — Rozwód bez orzekania o winie przy zgodzie obu stron — 3–6 miesięcy. Sporne sprawy z podziałem majątku i kwestiami dzieci — często ponad rok. Kancelaria oceni realny czas dla Twojej sprawy podczas bezpłatnej konsultacji.
+- **Ile kosztuje adwokat w sprawie rozwodowej?** — Wynagrodzenie jest ustalane indywidualnie zależnie od stopnia skomplikowania sprawy. Do tego dochodzi opłata sądowa od pozwu (600 zł) i ewentualne koszty biegłych. Pełna wycena jest przedstawiana przed podpisaniem umowy — bez ukrytych kosztów.
+- **Czy można uzyskać rozwód bez orzekania o winie?** — Tak — jeśli obie strony wyrażają zgodę, sąd orzeka rozwód bez ustalania winy. Jest to szybsze, tańsze i mniej konfliktowe rozwiązanie, często korzystniejsze dla dzieci.
+- **Co z mieszkaniem i kredytem po rozwodzie?** — Podział majątku (w tym nieruchomości i kredytów hipotecznych) może nastąpić w trakcie lub po sprawie rozwodowej. Możliwe opcje: sprzedaż i podział ceny, spłata jednego małżonka, ustanowienie współwłasności. Kancelaria omówi wszystkie scenariusze.
+- **Czy konsultacja jest bezpłatna?** — Tak — pierwsza konsultacja (30 minut) jest zawsze bezpłatna, stacjonarnie lub online (Teams/Zoom/telefon).
 
 ## Kontakt
 - [Kontakt z kancelarią](https://rozwod.waw.pl/): formularz kontaktowy i możliwość umówienia konsultacji.
+- Telefon: [605 089 552](tel:+48605089552)
+- E-mail: [kancelaria@idzik.org.pl](mailto:kancelaria@idzik.org.pl)
+- Godziny pracy: poniedziałek–piątek 8:00–18:00
+- Adres 1: ul. Ceramiczna 5E/79, 03-126 Warszawa
+- Adres 2: ul. Bolkowska 2A/28, 01-466 Warszawa
 
 ## Lokalizacje
 - [Bemowo](https://rozwodbemowo.pl/): lokalny landing page dla Bemowa.
 - [Bielany](https://rozwodbielany.pl/): lokalny landing page dla Bielan.
 - [Żoliborz](https://rozwodzoliborz.pl/): lokalny landing page dla Żoliborza.
-- [Tarchomin](https://rozwodtarchomin.pl/): lokalny landing page dla Tarchomina.
-- [Mokotów](https://rozwodmokotow.pl/): lokalny landing page dla Mokotowa.
 - [Wola](https://rozwodwola.pl/): lokalny landing page dla Woli.
 - [Ochota](https://rozwodochota.pl/): lokalny landing page dla Ochoty.
+- [Mokotów](https://rozwodmokotow.pl/): lokalny landing page dla Mokotowa.
+- [Tarchomin](https://rozwodtarchomin.pl/): lokalny landing page dla Tarchomina.
 - [Legionowo](https://rozwodlegionowo.pl/): lokalny landing page dla Legionowa.
-- [Jabłonna](https://rozwodjablonna.pl/): lokalny landing page dla Jabłonny.
 - [Łomianki](https://rozwodlomianki.pl/): lokalny landing page dla Łomianek.
+- [Jabłonna](https://rozwodjablonna.pl/): lokalny landing page dla Jabłonny.

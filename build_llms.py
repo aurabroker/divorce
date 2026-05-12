@@ -477,7 +477,7 @@ def main() -> None:
 
     results = []
     for d in DISTRICTS:
-        out_dir = base_dir / d["key"]
+        out_dir = base_dir if d.get("is_main") else base_dir / d["key"]
         out_dir.mkdir(parents=True, exist_ok=True)
 
         files = {

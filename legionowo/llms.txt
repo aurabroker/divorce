@@ -1,24 +1,39 @@
 # Kancelaria Adwokacka Magdalena Idzik-Cieśla
 
-> Lokalny landing page kancelarii adwokackiej specjalizującej się w sprawach rozwodowych i rodzinnych dla klientów z Legionowa i okolic.
+> Adwokat rozwodowy Legionowo — Kancelaria Adwokacka Magdalena Idzik-Cieśla. Pomoc prawna w sprawach rodzinnych dla klientów z Legionowa i okolic: rozwód, alimenty, opieka nad dziećmi, podział majątku. Bezpłatna konsultacja.
 
-Serwis przedstawia ofertę kancelarii dla osób potrzebujących pomocy prawnej w sprawach rozwodowych i rodzinnych w Legionowie.
-Zakres informacji obejmuje rozwód, separację, alimenty, władzę rodzicielską, kontakty z dzieckiem i podział majątku.
-Treści mają ułatwić szybkie zrozumienie zakresu pomocy i kontakt z kancelarią.
+Lokalny landing page kancelarii dedykowany klientom z Legionowa i okolicznych osiedli: centrum Legionowa, Piaski, Przymorze, os. Sobieskiego.
+Sprawy dla klientów z Legionowa są prowadzone przed właściwy sąd okręgowy — kancelaria pomoże ustalić właściwy sąd.
+Kancelaria oferuje konsultacje stacjonarne w Warszawie (ul. Ceramiczna 5E/79 i ul. Bolkowska 2A/28) oraz online — bez konieczności dojazdu.
+Strona służy wyłącznie do pozyskiwania zapytań i prezentacji zakresu usług. Nie zawiera treści prawniczych ani porad prawnych.
 
 ## Główne strony
-- [Strona główna](https://rozwodlegionowo.pl/): lokalny landing page kancelarii.
-- [Mapa strony](https://rozwodlegionowo.pl/sitemap.xml): lista publicznych adresów URL serwisu.
-- [Zasady dla robotów](https://rozwodlegionowo.pl/robots.txt): instrukcje techniczne dla crawlerów.
+- [Strona główna](https://rozwodlegionowo.pl/): główna publiczna strona tej domeny.
+- [Mapa strony](https://rozwodlegionowo.pl/sitemap.xml): indeks URL w formacie XML dla crawlerów.
+- [Zasady dla robotów](https://rozwodlegionowo.pl/robots.txt): polityka dostępu dla crawlerów AI i wyszukiwarek.
 
 ## Zakres pomocy
-- [Rozwód i separacja](https://rozwodlegionowo.pl/): pomoc prawna w sprawach o rozwód i separację.
-- [Alimenty](https://rozwodlegionowo.pl/): pomoc w sprawach alimentacyjnych.
-- [Władza rodzicielska i kontakty](https://rozwodlegionowo.pl/): wsparcie w sprawach dotyczących dzieci.
-- [Podział majątku](https://rozwodlegionowo.pl/): pomoc przy sprawach majątkowych po rozstaniu.
+- [Rozwód i separacja](https://rozwodlegionowo.pl/): Pozew o rozwód, reprezentacja przed sądem, negocjacje. Obsługujemy sprawy polubowne i sporne, z orzekaniem o winie i bez.
+- [Podział majątku](https://rozwodlegionowo.pl/): Analiza majątku wspólnego, nieruchomości, firm i kredytów hipotecznych. Postępowanie sądowe lub notarialne.
+- [Opieka nad dziećmi i alimenty](https://rozwodlegionowo.pl/): Plan wychowawczy, ustalenie kontaktów z dzieckiem, dochodzenie lub zmiana alimentów. Priorytetem jest dobro dzieci.
+- [Władza rodzicielska](https://rozwodlegionowo.pl/): Ograniczenie, zawieszenie lub pozbawienie władzy rodzicielskiej. Zmiana dotychczasowych ustaleń sądowych.
+- [Separacja prawna](https://rozwodlegionowo.pl/): Orzeczenie separacji jako etap poprzedzający rozwód lub samodzielna instytucja prawna.
+- [Mediacja rodzinna](https://rozwodlegionowo.pl/): Wsparcie w ugodowym zakończeniu sporu — szybciej, taniej i mniej konfliktowo niż droga sądowa.
+
+## FAQ
+- **Ile trwa sprawa rozwodowa?** — Rozwód bez orzekania o winie przy zgodzie obu stron — 3–6 miesięcy. Sporne sprawy z podziałem majątku i kwestiami dzieci — często ponad rok. Kancelaria oceni realny czas dla Twojej sprawy podczas bezpłatnej konsultacji.
+- **Ile kosztuje adwokat w sprawie rozwodowej?** — Wynagrodzenie jest ustalane indywidualnie zależnie od stopnia skomplikowania sprawy. Do tego dochodzi opłata sądowa od pozwu (600 zł) i ewentualne koszty biegłych. Pełna wycena jest przedstawiana przed podpisaniem umowy — bez ukrytych kosztów.
+- **Czy można uzyskać rozwód bez orzekania o winie?** — Tak — jeśli obie strony wyrażają zgodę, sąd orzeka rozwód bez ustalania winy. Jest to szybsze, tańsze i mniej konfliktowe rozwiązanie, często korzystniejsze dla dzieci.
+- **Co z mieszkaniem i kredytem po rozwodzie?** — Podział majątku (w tym nieruchomości i kredytów hipotecznych) może nastąpić w trakcie lub po sprawie rozwodowej. Możliwe opcje: sprzedaż i podział ceny, spłata jednego małżonka, ustanowienie współwłasności. Kancelaria omówi wszystkie scenariusze.
+- **Czy konsultacja jest bezpłatna?** — Tak — pierwsza konsultacja (30 minut) jest zawsze bezpłatna, stacjonarnie lub online (Teams/Zoom/telefon).
 
 ## Kontakt
 - [Kontakt z kancelarią](https://rozwodlegionowo.pl/): formularz kontaktowy i możliwość umówienia konsultacji.
+- Telefon: [605 089 552](tel:+48605089552)
+- E-mail: [kancelaria@idzik.org.pl](mailto:kancelaria@idzik.org.pl)
+- Godziny pracy: poniedziałek–piątek 8:00–18:00
+- Adres 1: ul. Ceramiczna 5E/79, 03-126 Warszawa
+- Adres 2: ul. Bolkowska 2A/28, 01-466 Warszawa
 
 ## Optional
-- [Główna witryna kancelarii](https://rozwod.waw.pl/): centralna strona kancelarii obejmująca Warszawę i okolice.
+- [Główna witryna kancelarii](https://rozwod.waw.pl/): centralna strona kancelarii — pełna oferta, dane kontaktowe, wszystkie lokalizacje.
