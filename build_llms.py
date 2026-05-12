@@ -436,22 +436,22 @@ def build_robots(d: dict) -> str:
         Allow: /
 
         User-agent: Google-Extended
-        Disallow: /
+        Allow: /
 
         User-agent: CCBot
         Allow: /
 
         User-agent: Meta-ExternalAgent
-        Disallow: /
+        Allow: /
 
         User-agent: FacebookBot
-        Disallow: /
+        Allow: /
 
         User-agent: Bytespider
-        Disallow: /
+        Allow: /
 
         User-agent: Applebot-Extended
-        Disallow: /
+        Allow: /
 
         # ─── DOMYŚLNE ────────────────────────────────────────────────────
         User-agent: *
