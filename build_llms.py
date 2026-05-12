@@ -439,7 +439,7 @@ def build_robots(d: dict) -> str:
         Disallow: /
 
         User-agent: CCBot
-        Disallow: /
+        Allow: /
 
         User-agent: Meta-ExternalAgent
         Disallow: /
