@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /dziekujemy.html
 
-Sitemap: https://rozwodjablonna.pl/sitemap.xml
+Sitemap: https://rozwodjablonna.pl//sitemap.xml

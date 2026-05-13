@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /dziekujemy.html
 
-Sitemap: https://rozwodzoliborz.pl/sitemap.xml
+Sitemap: https://rozwodzoliborz.pl//sitemap.xml

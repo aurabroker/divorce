@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /dziekujemy.html
 
-Sitemap: https://rozwodlegionowo.pl/sitemap.xml
+Sitemap: https://rozwodlegionowo.pl//sitemap.xml

@@ -10,7 +10,7 @@ import shutil
 
 DISTRICTS = [
     dict(
-        name="Bemowo", name_gen="Bemowa", key="bemowo",
+        name="Bemowo", name_gen="Bemowa", name_loc="Bemowie", key="bemowo",
         domain="rozwodbemowo.pl", url="https://rozwodbemowo.pl/",
         accent="#8B1A3A", accent_light="#C13C6A", accent_bg="#FDF0F4",
         neighborhoods="Chrzanów, Jelonki Północne, Jelonki Południowe, Lotnisko, Wola Ulrychów, Górce",
@@ -20,7 +20,7 @@ DISTRICTS = [
         t_topic="Sprawa rozwodowa · Bemowo",
     ),
     dict(
-        name="Bielany", name_gen="Bielan", key="bielany",
+        name="Bielany", name_gen="Bielan", name_loc="Bielanach", key="bielany",
         domain="rozwodbielany.pl", url="https://rozwodbielany.pl/",
         accent="#1A4E8B", accent_light="#4A7FC1", accent_bg="#EEF4FB",
         neighborhoods="Marymont, Chomiczówka, Wrzeciono, Słodowiec, Młociny, Placówka",
@@ -30,7 +30,7 @@ DISTRICTS = [
         t_topic="Podział majątku · Bielany",
     ),
     dict(
-        name="Żoliborz", name_gen="Żoliborza", key="zoliborz",
+        name="Żoliborz", name_gen="Żoliborza", name_loc="Żoliborzu", key="zoliborz",
         domain="rozwodzoliborz.pl", url="https://rozwodzoliborz.pl/",
         accent="#5B2D8E", accent_light="#8B5EC1", accent_bg="#F3EEF9",
         neighborhoods="Stary Żoliborz, Sady Żoliborskie, Piaski, Potok, Marymont-Ruda",
@@ -40,7 +40,7 @@ DISTRICTS = [
         t_topic="Opieka nad dziećmi · Żoliborz",
     ),
     dict(
-        name="Wola", name_gen="Woli", key="wola",
+        name="Wola", name_gen="Woli", name_loc="Woli", key="wola",
         domain="rozwodwola.pl", url="https://rozwodwola.pl/",
         accent="#8B3A1A", accent_light="#C46A3C", accent_bg="#FDF0E9",
         neighborhoods="Czyste, Mirów, Odolany, Ulrychów, Koło, Szymańów",
@@ -50,7 +50,7 @@ DISTRICTS = [
         t_topic="Sprawa rozwodowa · Wola",
     ),
     dict(
-        name="Ochota", name_gen="Ochoty", key="ochota",
+        name="Ochota", name_gen="Ochoty", name_loc="Ochocie", key="ochota",
         domain="rozwodochota.pl", url="https://rozwodochota.pl/",
         accent="#1A6B5B", accent_light="#3CA48B", accent_bg="#EEFAF7",
         neighborhoods="Rakowiec, Stara Ochota, Szczęśliwice, Filtry",
@@ -60,7 +60,7 @@ DISTRICTS = [
         t_topic="Separacja prawna · Ochota",
     ),
     dict(
-        name="Mokotów", name_gen="Mokotowa", key="mokotow",
+        name="Mokotów", name_gen="Mokotowa", name_loc="Mokotowie", key="mokotow",
         domain="rozwodmokotow.pl", url="https://rozwodmokotow.pl/",
         accent="#2D4A6B", accent_light="#5A7FA8", accent_bg="#EEF2F8",
         neighborhoods="Stary Mokotów, Służewiec, Sadyba, Wierzbno, Sielce, Ksawerów",
@@ -70,7 +70,7 @@ DISTRICTS = [
         t_topic="Podział majątku · Mokotów",
     ),
     dict(
-        name="Tarchomin", name_gen="Tarchomina", key="tarchomin",
+        name="Tarchomin", name_gen="Tarchomina", name_loc="Tarchominie", key="tarchomin",
         domain="rozwodtarchomin.pl", url="https://rozwodtarchomin.pl/",
         accent="#4A6B1A", accent_light="#7FA83C", accent_bg="#F2F7EE",
         neighborhoods="Tarchomin, Henryków, Nowodwory, Białołęka Dworska",
@@ -80,7 +80,7 @@ DISTRICTS = [
         t_topic="Sprawa rozwodowa · Tarchomin",
     ),
     dict(
-        name="Legionowo", name_gen="Legionowa", key="legionowo",
+        name="Legionowo", name_gen="Legionowa", name_loc="Legionowie", key="legionowo",
         domain="rozwodlegionowo.pl", url="https://rozwodlegionowo.pl/",
         accent="#1A5E6B", accent_light="#3C9AA8", accent_bg="#EEF8FA",
         neighborhoods="centrum Legionowa, Piaski, Przymorze, os. Sobieskiego",
@@ -90,7 +90,7 @@ DISTRICTS = [
         t_topic="Opieka nad dziećmi · Legionowo",
     ),
     dict(
-        name="Łomianki", name_gen="Łomianek", key="lomianki",
+        name="Łomianki", name_gen="Łomianek", name_loc="Łomiankach", key="lomianki",
         domain="rozwodlomianki.pl", url="https://rozwodlomianki.pl/",
         accent="#2D6B1A", accent_light="#5AA83C", accent_bg="#EEF8EE",
         neighborhoods="centrum Łomianek, Dąbrowa, Kiełpin, Łomianki Górne, Kazuń",
@@ -100,7 +100,7 @@ DISTRICTS = [
         t_topic="Podział majątku · Łomianki",
     ),
     dict(
-        name="Jabłonna", name_gen="Jabłonny", key="jablonna",
+        name="Jabłonna", name_gen="Jabłonny", name_loc="Jabłonnie", key="jablonna",
         domain="rozwodjablonna.pl", url="https://rozwodjablonna.pl/",
         accent="#6B5B1A", accent_light="#A89040", accent_bg="#FAF7EE",
         neighborhoods="Jabłonna, Chotomów, Skierdy, Rajszew, Dąbrowa Chotomowska, Trzciany",
@@ -158,14 +158,28 @@ def build_page(d):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Adwokat rozwodowy {d['name']} — Kancelaria Magdalena Idzik-Cieśla. Rozwód, podział majątku, opieka nad dziećmi. Bezpłatna konsultacja 30 minut. Tel. 605 089 552.">
   <meta name="robots" content="index, follow">
-  <title>Adwokat Rozwodowy {d['name']} | Kancelaria Idzik-Cieśla</title>
+  <title>Adwokat rozwodowy {d['name']} | Kancelaria Magdalena Idzik-Cieśla</title>
   <link rel="canonical" href="{d['url']}">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Adwokat Rozwodowy {d['name']} | Kancelaria Idzik-Cieśla">
-  <meta property="og:description" content="Dyskretna i skuteczna pomoc prawna w sprawach rodzinnych na {d['name']}. Bezpłatna konsultacja 30 minut.">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="Kancelaria Magdalena Idzik-Cieśla">
+  <meta property="og:title" content="Adwokat rozwodowy {d['name']} | Kancelaria Magdalena Idzik-Cieśla">
+  <meta property="og:description" content="Pomoc w sprawach o rozwód, alimenty, dzieci i podział majątku na {d['name_loc']}.">
   <meta property="og:url" content="{d['url']}">
+  <meta property="og:image" content="{d['url']}assets/{d['key']}.png">
+  <meta property="og:image:secure_url" content="{d['url']}assets/{d['key']}.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Adwokat rozwodowy {d['name']} - Kancelaria Magdalena Idzik-Cieśla">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Adwokat rozwodowy {d['name']} | Kancelaria Magdalena Idzik-Cieśla">
+  <meta name="twitter:description" content="Rozwód, alimenty, dzieci i majątek - pomoc prawna na {d['name_loc']}.">
+  <meta name="twitter:image" content="{d['url']}assets/{d['key']}.png">
 
   <script>
     window.SITE_CONFIG = {{
@@ -839,11 +853,13 @@ def main():
         out_dir = os.path.join(base_dir, d["key"])
         os.makedirs(out_dir, exist_ok=True)
 
-        # Kopiuj assets/ do folderu domeny (nadpisuj)
+        # Kopiuj pliki z assets/ do folderu domeny (nadpisuj, zachowaj PNG dzielnicy)
         assets_dst = os.path.join(out_dir, "assets")
-        if os.path.exists(assets_dst):
-            shutil.rmtree(assets_dst)
-        shutil.copytree(assets_src, assets_dst)
+        os.makedirs(assets_dst, exist_ok=True)
+        for fname in os.listdir(assets_src):
+            src_file = os.path.join(assets_src, fname)
+            if os.path.isfile(src_file):
+                shutil.copy2(src_file, os.path.join(assets_dst, fname))
 
         files = {
             "index.html":       build_page(d),

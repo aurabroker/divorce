@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /dziekujemy.html
 
-Sitemap: https://rozwodmokotow.pl/sitemap.xml
+Sitemap: https://rozwodmokotow.pl//sitemap.xml
