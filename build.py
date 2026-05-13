@@ -11,7 +11,7 @@ import shutil
 DISTRICTS = [
     dict(
         name="Bemowo", name_gen="Bemowa", key="bemowo",
-        domain="rozwodbemowo.pl", url="https://rozwodbemowo.pl",
+        domain="rozwodbemowo.pl", url="https://rozwodbemowo.pl/",
         accent="#8B1A3A", accent_light="#C13C6A", accent_bg="#FDF0F4",
         neighborhoods="Chrzanów, Jelonki Północne, Jelonki Południowe, Lotnisko, Wola Ulrychów, Górce",
         court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
@@ -21,7 +21,7 @@ DISTRICTS = [
     ),
     dict(
         name="Bielany", name_gen="Bielan", key="bielany",
-        domain="rozwodbielany.pl", url="https://rozwodbielany.pl",
+        domain="rozwodbielany.pl", url="https://rozwodbielany.pl/",
         accent="#1A4E8B", accent_light="#4A7FC1", accent_bg="#EEF4FB",
         neighborhoods="Marymont, Chomiczówka, Wrzeciono, Słodowiec, Młociny, Placówka",
         court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
@@ -31,7 +31,7 @@ DISTRICTS = [
     ),
     dict(
         name="Żoliborz", name_gen="Żoliborza", key="zoliborz",
-        domain="rozwodzoliborz.pl", url="https://rozwodzoliborz.pl",
+        domain="rozwodzoliborz.pl", url="https://rozwodzoliborz.pl/",
         accent="#5B2D8E", accent_light="#8B5EC1", accent_bg="#F3EEF9",
         neighborhoods="Stary Żoliborz, Sady Żoliborskie, Piaski, Potok, Marymont-Ruda",
         court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
@@ -41,7 +41,7 @@ DISTRICTS = [
     ),
     dict(
         name="Wola", name_gen="Woli", key="wola",
-        domain="rozwodwola.pl", url="https://rozwodwola.pl",
+        domain="rozwodwola.pl", url="https://rozwodwola.pl/",
         accent="#8B3A1A", accent_light="#C46A3C", accent_bg="#FDF0E9",
         neighborhoods="Czyste, Mirów, Odolany, Ulrychów, Koło, Szymańów",
         court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
@@ -51,7 +51,7 @@ DISTRICTS = [
     ),
     dict(
         name="Ochota", name_gen="Ochoty", key="ochota",
-        domain="rozwodochota.pl", url="https://rozwodochota.pl",
+        domain="rozwodochota.pl", url="https://rozwodochota.pl/",
         accent="#1A6B5B", accent_light="#3CA48B", accent_bg="#EEFAF7",
         neighborhoods="Rakowiec, Stara Ochota, Szczęśliwice, Filtry",
         court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
@@ -61,7 +61,7 @@ DISTRICTS = [
     ),
     dict(
         name="Mokotów", name_gen="Mokotowa", key="mokotow",
-        domain="rozwodmokotow.pl", url="https://rozwodmokotow.pl",
+        domain="rozwodmokotow.pl", url="https://rozwodmokotow.pl/",
         accent="#2D4A6B", accent_light="#5A7FA8", accent_bg="#EEF2F8",
         neighborhoods="Stary Mokotów, Służewiec, Sadyba, Wierzbno, Sielce, Ksawerów",
         court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
@@ -71,7 +71,7 @@ DISTRICTS = [
     ),
     dict(
         name="Tarchomin", name_gen="Tarchomina", key="tarchomin",
-        domain="rozwodtarchomin.pl", url="https://rozwodtarchomin.pl",
+        domain="rozwodtarchomin.pl", url="https://rozwodtarchomin.pl/",
         accent="#4A6B1A", accent_light="#7FA83C", accent_bg="#F2F7EE",
         neighborhoods="Tarchomin, Henryków, Nowodwory, Białołęka Dworska",
         court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
@@ -81,7 +81,7 @@ DISTRICTS = [
     ),
     dict(
         name="Legionowo", name_gen="Legionowa", key="legionowo",
-        domain="rozwodlegionowo.pl", url="https://rozwodlegionowo.pl",
+        domain="rozwodlegionowo.pl", url="https://rozwodlegionowo.pl/",
         accent="#1A5E6B", accent_light="#3C9AA8", accent_bg="#EEF8FA",
         neighborhoods="centrum Legionowa, Piaski, Przymorze, os. Sobieskiego",
         court="właściwy sąd okręgowy", court_addr="pomagamy ustalić właściwy sąd dla Twojego miejsca zamieszkania",
@@ -91,7 +91,7 @@ DISTRICTS = [
     ),
     dict(
         name="Łomianki", name_gen="Łomianek", key="lomianki",
-        domain="rozwodlomianki.pl", url="https://rozwodlomianki.pl",
+        domain="rozwodlomianki.pl", url="https://rozwodlomianki.pl/",
         accent="#2D6B1A", accent_light="#5AA83C", accent_bg="#EEF8EE",
         neighborhoods="centrum Łomianek, Dąbrowa, Kiełpin, Łomianki Górne, Kazuń",
         court="Sąd Okręgowy w Warszawie", court_addr="al. Solidarności 127, Warszawa",
@@ -101,7 +101,7 @@ DISTRICTS = [
     ),
     dict(
         name="Jabłonna", name_gen="Jabłonny", key="jablonna",
-        domain="rozwodjablonna.pl", url="https://rozwodjablonna.pl",
+        domain="rozwodjablonna.pl", url="https://rozwodjablonna.pl/",
         accent="#6B5B1A", accent_light="#A89040", accent_bg="#FAF7EE",
         neighborhoods="Jabłonna, Chotomów, Skierdy, Rajszew, Dąbrowa Chotomowska, Trzciany",
         court="właściwy sąd okręgowy", court_addr="pomagamy ustalić właściwy sąd dla Twojego miejsca zamieszkania",
@@ -112,17 +112,17 @@ DISTRICTS = [
 ]
 
 ALL_DOMAINS = [
-    ("Warszawa",  "https://rozwod.waw.pl"),
-    ("Bemowo",    "https://rozwodbemowo.pl"),
-    ("Bielany",   "https://rozwodbielany.pl"),
-    ("Żoliborz",  "https://rozwodzoliborz.pl"),
+    ("Warszawa",  "https://rozwod.waw.pl/"),
+    ("Bemowo",    "https://rozwodbemowo.pl/"),
+    ("Bielany",   "https://rozwodbielany.pl/"),
+    ("Żoliborz",  "https://rozwodzoliborz.pl/"),
     ("Wola",      "https://rozwodwola.pl"),
-    ("Ochota",    "https://rozwodochota.pl"),
-    ("Mokotów",   "https://rozwodmokotow.pl"),
-    ("Tarchomin", "https://rozwodtarchomin.pl"),
-    ("Legionowo", "https://rozwodlegionowo.pl"),
-    ("Łomianki",  "https://rozwodlomianki.pl"),
-    ("Jabłonna",  "https://rozwodjablonna.pl"),
+    ("Ochota",    "https://rozwodochota.pl/"),
+    ("Mokotów",   "https://rozwodmokotow.pl/"),
+    ("Tarchomin", "https://rozwodtarchomin.pl/"),
+    ("Legionowo", "https://rozwodlegionowo.pl/"),
+    ("Łomianki",  "https://rozwodlomianki.pl/"),
+    ("Jabłonna",  "https://rozwodjablonna.pl/"),
 ]
 
 
