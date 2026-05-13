@@ -305,7 +305,7 @@ def build_page(d):
   <div class="container">
     <div class="stats-inner">
       <div class="stat-item">
-        <div class="stat-number" data-count="12" data-suffix="+">12+</div>
+        <div class="stat-number" data-count="15" data-suffix="+">15+</div>
         <div class="stat-label">Lat doświadczenia</div>
       </div>
       <div class="stat-item">
