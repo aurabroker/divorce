@@ -143,14 +143,15 @@ function initAnimations() {
         const target = parseInt(el.dataset.count, 10);
         const suffix = el.dataset.suffix || "";
         const prefix = el.dataset.prefix || "";
+        const counter = { value: 0 };
         anime({
-          targets: el,
-          innerHTML: [0, target],
+          targets: counter,
+          value: target,
           round: 1,
           duration: 1600,
           easing: "easeOutExpo",
-          update: function(anim) {
-            el.innerHTML = prefix + Math.round(anim.animations[0].currentValue) + suffix;
+          update: function() {
+            el.textContent = prefix + Math.round(counter.value) + suffix;
           }
         });
         statsObs.unobserve(el);
