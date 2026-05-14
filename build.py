@@ -202,9 +202,9 @@ def build_page(d):
     "email": "kancelaria@idzik.org.pl",
     "address": {{
       "@type": "PostalAddress",
-      "streetAddress": "ul. Ceramiczna 5E/79",
+      "streetAddress": "ul. Bolkowska 2A/28",
       "addressLocality": "Warszawa",
-      "postalCode": "03-126",
+      "postalCode": "01-466",
       "addressCountry": "PL"
     }},
     "areaServed": {{"@type": "Place", "name": "{d['name']}, Warszawa"}},
@@ -329,10 +329,6 @@ def build_page(d):
 <div class="location-strip">
   <div class="container">
     <div class="location-strip-inner">
-      <span class="location-chip">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        ul. Ceramiczna 5E/79, Warszawa
-      </span>
       <span class="location-chip">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         ul. Bolkowska 2A/28, Warszawa
@@ -604,7 +600,7 @@ def build_page(d):
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-body">
-            <p>Tak. Prowadzimy konsultacje przez Teams, Zoom lub telefon dla klientów z całej Polski, w tym z {d['name']} i okolic. Stacjonarnie przyjmujemy przy ul. Ceramicznej 5E/79 oraz ul. Bolkowskiej 2A/28 w Warszawie. Pierwsza konsultacja 30 minut jest zawsze bezpłatna.</p>
+            <p>Tak. Prowadzimy konsultacje przez Teams, Zoom lub telefon dla klientów z całej Polski, w tym z {d['name']} i okolic. Stacjonarnie przyjmujemy przy ul. Bolkowskiej 2A/28 w Warszawie. Pierwsza konsultacja 30 minut jest zawsze bezpłatna.</p>
           </div>
         </div>
       </div>
@@ -706,9 +702,7 @@ def build_page(d):
       <div class="footer-col">
         <h5>Lokalizacje</h5>
         <ul>
-          <li>ul. Ceramiczna 5E/79</li>
-          <li>03-126 Warszawa</li>
-          <li style="margin-top:.5rem">ul. Bolkowska 2A/28</li>
+          <li>ul. Bolkowska 2A/28</li>
           <li>01-466 Warszawa</li>
           <li style="margin-top:.5rem"><a href="#">Konsultacje online</a></li>
         </ul>
