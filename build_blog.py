@@ -28,6 +28,7 @@ def footer_domains_line(current_url: str) -> str:
 
 def build_blog_page(d: dict) -> str:
     domains_line = footer_domains_line(d["url"])
+    platform = 'Rozwod' + d['key'].capitalize() + '.pl'  # np. RozwodBemowo.pl
 
     return f"""<!DOCTYPE html>
 <html lang="pl">
@@ -55,7 +56,7 @@ def build_blog_page(d: dict) -> str:
       accentColor: "{d['accent']}",
       accentLight: "{d['accent_light']}",
       accentBg:    "{d['accent_bg']}",
-      domain:      "{d['domain']}",
+      domain:      "{platform}",
       url:         "{d['url']}"
     }};
   </script>
