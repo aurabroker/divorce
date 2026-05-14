@@ -8,8 +8,11 @@ Kopiuje: assets/blog.js  →  {klucz}/assets/blog.js
 
 import os
 import shutil
+from datetime import datetime
 
 from build import DISTRICTS, ALL_DOMAINS
+
+BUILD_VER = datetime.now().strftime('%Y%m%d%H%M')
 
 
 # ── Pomocnicze ────────────────────────────────────────────────────────────────
@@ -621,8 +624,8 @@ def build_blog_page(d: dict) -> str:
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
-<script src="assets/page.js"  defer></script>
-<script src="assets/blog.js"  defer></script>
+<script src="assets/page.js?v={BUILD_VER}"  defer></script>
+<script src="assets/blog.js?v={BUILD_VER}"  defer></script>
 </body>
 </html>"""
 
