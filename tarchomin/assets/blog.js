@@ -22,7 +22,7 @@ async function loadBlogPosts() {
   try {
     const { data, error } = await getSB()
       .from('aura_articles')
-      .select('id, title, excerpt, tags, published_at, created_at, cover_image')
+      .select('id, title, excerpt, tags, published_at, created_at')
       .eq('status', 'published')
       .contains('platforms', [domain])
       .order('published_at', { ascending: false });
@@ -39,11 +39,7 @@ async function loadBlogPosts() {
       const emoji   = CARD_EMOJIS[idx % CARD_EMOJIS.length];
       const dateStr = new Date(art.published_at || art.created_at)
         .toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
-      const thumb = art.cover_image
-        ? `<div class="blog-card-thumb" style="padding:0;">
-             <img src="${art.cover_image}" alt="${escHtml(art.title)}" loading="lazy">
-           </div>`
-        : `<div class="blog-card-thumb">${emoji}</div>`;
+      const thumb = `<div class="blog-card-thumb">${emoji}</div>`;
 
       return `
         <article class="blog-card" data-article-id="${art.id}" role="button" tabindex="0"
