@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blog prawny Łomianki — Kancelaria Magdalena Idzik-Cieśla. Artykuły i porady o sprawach rozwodowych, podziale majątku i opiece nad dziećmi.">
+  <meta name="robots" content="index, follow">
+  <title>Blog Prawny Łomianki | Kancelaria Magdalena Idzik-Cieśla</title>
+  <link rel="canonical" href="https://rozwodlomianki.pl/blog.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:locale"      content="pl_PL">
+  <meta property="og:site_name"   content="Kancelaria Magdalena Idzik-Cieśla">
+  <meta property="og:title"       content="Blog Prawny Łomianki | Kancelaria Magdalena Idzik-Cieśla">
+  <meta property="og:description" content="Porady prawne, artykuły i wiedza o sprawach rozwodowych dla mieszkańców Łomianek.">
+  <meta property="og:url"         content="https://rozwodlomianki.pl/blog.html">
+  <meta property="og:image"       content="https://rozwodlomianki.pl/assets/lomianki.png">
+
+  <script>
+    window.SITE_CONFIG = {
+      district:    "Łomianki",
+      districtKey: "lomianki",
+      accentColor: "#2D6B1A",
+      accentLight: "#5AA83C",
+      accentBg:    "#EEF8EE",
+      domain:      "rozwodlomianki.pl",
+      url:         "https://rozwodlomianki.pl/"
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+
+  <style>
+    /* ── Blog list ───────────────────────────────────────────────── */
+    .blog-hero {
+      background: var(--navy);
+      color: white;
+      padding: clamp(3.5rem, 7vw, 6rem) 0;
+      text-align: center;
+    }
+    .blog-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 800;
+      margin: 0 0 .75rem;
+      color: white;
+    }
+    .blog-hero p {
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    .blog-cards-section {
+      padding: clamp(2.5rem, 5vw, 4rem) 0;
+      min-height: 35vh;
+    }
+    .blog-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.75rem;
+    }
+    .blog-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow .2s, transform .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card:hover, .blog-card:focus {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+      outline: none;
+    }
+    .blog-card-thumb {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-bg);
+      font-size: 3.5rem;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .blog-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .blog-card-body     { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-tag {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--accent);
+      margin-bottom: .5rem;
+    }
+    .blog-card-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 0 0 .75rem;
+      line-height: 1.4;
+    }
+    .blog-card-excerpt {
+      font-size: .875rem;
+      color: var(--text-muted);
+      flex: 1;
+      line-height: 1.65;
+      margin: 0 0 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .blog-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: .85rem;
+      margin-top: auto;
+    }
+    .blog-card-date { font-size: .75rem; color: var(--text-muted); }
+    .blog-card-cta  { font-size: .8rem; font-weight: 700; color: var(--accent); }
+    .blog-empty, .blog-loading {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-lg);
+    }
+    .blog-error {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem;
+      color: #b91c1c;
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      border-radius: var(--radius-lg);
+    }
+
+    /* ── Article reader ──────────────────────────────────────────── */
+    .blog-reader-toolbar {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: .85rem 0;
+      z-index: 20;
+    }
+    .blog-reader-toolbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-reader-back {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--text);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .4rem .75rem .4rem .4rem;
+      border-radius: var(--radius);
+      transition: background .15s, color .15s;
+      font-family: var(--sans);
+    }
+    .btn-reader-back:hover { background: var(--accent-bg); color: var(--accent); }
+    .btn-reader-copy {
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      padding: .45rem 1rem;
+      border-radius: var(--radius);
+      transition: background .15s, color .15s, border-color .15s;
+      font-family: var(--sans);
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .btn-reader-copy:hover { background: var(--accent-bg); color: var(--accent); border-color: var(--accent); }
+
+    .blog-reader-main { padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(3rem, 6vw, 5rem); }
+
+    .blog-article-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+      align-items: start;
+    }
+    .blog-article-sidebar-inner {
+      position: sticky;
+      top: 5rem;
+    }
+    .blog-article-image-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      background: var(--accent-bg);
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+    .blog-article-image-wrap img { width: 100%; height: auto; display: block; }
+
+    .blog-cta-box {
+      background: var(--accent-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+    }
+    .blog-cta-box h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin: 0 0 .5rem;
+      font-weight: 700;
+    }
+    .blog-cta-box p  { font-size: .85rem; color: var(--text-muted); margin: 0 0 1.25rem; line-height: 1.6; }
+    .blog-cta-box .btn { width: 100%; justify-content: center; margin-bottom: .75rem; display: block; text-align: center; }
+    .blog-cta-tel {
+      display: block;
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .blog-cta-tel:hover { text-decoration: underline; }
+
+    /* Reader meta */
+    .reader-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+    .reader-tag {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      background: var(--accent-bg);
+      color: var(--accent);
+      padding: .3rem .75rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+    #reader-title {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0 0 .75rem;
+      line-height: 1.25;
+    }
+    #reader-date {
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 2rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Prose (treść z CMS) */
+    .prose-custom { font-size: 1rem; line-height: 1.8; color: var(--text); }
+    .prose-custom h2 {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 800;
+      margin: 2em 0 .6em;
+      color: var(--navy);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .3em;
+    }
+    .prose-custom h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 1.5em 0 .5em;
+      color: var(--navy);
+    }
+    .prose-custom p  { margin-bottom: 1.2em; }
+    .prose-custom ul { list-style: disc;    margin-left: 1.5em; margin-bottom: 1.2em; }
+    .prose-custom ol { list-style: decimal; margin-left: 1.5em; margin-bottom: 1.2em; }
+    .prose-custom li { margin-bottom: .4em; }
+    .prose-custom img {
+      max-width: 100%; height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      margin: 1.5em 0;
+      display: block;
+    }
+    .prose-custom blockquote {
+      border-left: 3px solid var(--accent);
+      padding: .75em 1.25em;
+      margin: 1.5em 0;
+      background: var(--accent-bg);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .prose-custom a { color: var(--accent); text-decoration: underline; }
+
+    /* Footer domains one-line */
+    .footer-domains-line {
+      margin-top: .4rem;
+      font-size: .75rem;
+      color: rgba(255,255,255,.4);
+      line-height: 2;
+    }
+    .footer-domains-line a {
+      color: rgba(255,255,255,.4);
+      text-decoration: none;
+    }
+    .footer-domains-line a:hover { color: rgba(255,255,255,.75); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .blog-article-layout     { grid-template-columns: 1fr; }
+      .blog-article-sidebar-inner { position: static; }
+    }
+    @media (max-width: 600px) {
+      .blog-card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ticker-wrap" aria-label="Obszary działania kancelarii">
+  <div class="ticker-track" id="ticker-track"></div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="https://rozwodlomianki.pl/" class="nav-logo" aria-label="Strona główna">
+      <span class="nav-logo-name">Kancelaria Adwokacka</span>
+      <span class="nav-logo-sub">Magdalena Idzik‑Cieśla</span>
+    </a>
+    <nav class="nav-links nav-desktop" id="nav-desktop" aria-label="Nawigacja główna">
+      <a href="index.html#pomoc"   class="nav-link">Zakres pomocy</a>
+      <a href="index.html#proces"  class="nav-link">Jak działamy</a>
+      <a href="index.html#opinie"  class="nav-link">Opinie</a>
+      <a href="index.html#faq"     class="nav-link">FAQ</a>
+      <a href="blog.html"          class="nav-link" style="color:var(--accent);font-weight:600;border-bottom:2px solid var(--accent);">Blog</a>
+      <a href="#kontakt"           class="btn nav-cta">Bezpłatna konsultacja</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     WIDOK LISTY ARTYKUŁÓW
+══════════════════════════════════════════════════════════════ -->
+<div id="blog-list-view">
+
+  <section class="blog-hero">
+    <div class="container">
+      <p class="section-label" style="color:rgba(255,255,255,.55);justify-content:center;margin-bottom:.75rem;">
+        Kancelaria Łomianki · Wiedza prawna
+      </p>
+      <h1>Artykuły i Porady Prawne</h1>
+      <p>
+        Materiały przygotowane przez adwokatów kancelarii — praktyczna wiedza
+        o sprawach rozwodowych, podziale majątku i opiece nad dziećmi.
+      </p>
+    </div>
+  </section>
+
+  <section class="blog-cards-section">
+    <div class="container">
+      <div id="blog-grid" class="blog-card-grid">
+        <div class="blog-loading">Ładowanie artykułów&hellip;</div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /#blog-list-view -->
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     CZYTNIK ARTYKUŁU (2-kolumnowy, ukryty domyślnie)
+══════════════════════════════════════════════════════════════ -->
+<div id="article-reader-view" style="display:none;">
+
+  <div class="blog-reader-toolbar">
+    <div class="container">
+      <div class="blog-reader-toolbar-inner">
+        <button id="close-article-btn" class="btn-reader-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 5l-7 7 7 7"/>
+          </svg>
+          Wróć do listy artykułów
+        </button>
+        <button id="copy-link-btn" class="btn-reader-copy">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+          Skopiuj link
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-reader-main">
+    <div class="container">
+      <div class="blog-article-layout">
+
+        <!-- Lewa kolumna: treść artykułu -->
+        <article>
+          <div id="reader-tags" class="reader-tags"></div>
+          <h1 id="reader-title"></h1>
+          <div id="reader-date"></div>
+          <div id="reader-content" class="prose-custom"></div>
+        </article>
+
+        <!-- Prawa kolumna: obraz + CTA (sticky) -->
+        <aside>
+          <div class="blog-article-sidebar-inner">
+            <div id="reader-image-wrap" class="blog-article-image-wrap">⚖️</div>
+            <div class="blog-cta-box">
+              <h3>Potrzebujesz porady prawnej?</h3>
+              <p>Pierwsza konsultacja 30 minut jest bezpłatna — stacjonarnie lub online.</p>
+              <a href="#kontakt" class="btn btn-primary">Umów konsultację →</a>
+              <a href="tel:+48605089552" class="blog-cta-tel">📞 605 089 552</a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+
+</div><!-- /#article-reader-view -->
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     FORMULARZ KONTAKTOWY (zawsze widoczny na dole)
+══════════════════════════════════════════════════════════════ -->
+<section class="contact-section" id="kontakt">
+  <div class="container">
+    <div class="section-header section-center text-center">
+      <p class="section-label">Bezpłatna konsultacja</p>
+      <h2 class="section-title">Zrób pierwszy krok<br><em>w swoim tempie</em></h2>
+      <p class="section-desc">
+        Nie musisz wiedzieć wszystkiego od razu. Wystarczy jeden formularz lub telefon.
+        Resztą zajmiemy się my.
+      </p>
+    </div>
+    <form id="contact-form" action="https://formspree.io/f/mkokeava" method="POST" class="form-card">
+      <input type="hidden" name="_next"    value="https://rozwodlomianki.pl/dziekujemy.html">
+      <input type="hidden" name="_subject" value="Nowe zapytanie z rozwodlomianki.pl (blog)">
+      <input type="text"   name="_gotcha"  style="display:none">
+      <div class="form-card-title">Umów bezpłatną konsultację</div>
+      <p class="form-card-sub">Oddzwonimy w ciągu 2 godzin w dni robocze (8:00–18:00).</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="b-imie">Imię *</label>
+          <input type="text" id="b-imie" name="imie" placeholder="Jan" required autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label for="b-tel">Telefon *</label>
+          <input type="tel" id="b-tel" name="telefon" placeholder="+48 605 089 552" required autocomplete="tel">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="b-email">E-mail</label>
+        <input type="email" id="b-email" name="email" placeholder="jan@example.com" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="b-temat">Czego dotyczy sprawa? *</label>
+        <select id="b-temat" name="temat" required>
+          <option value="" disabled selected>Wybierz temat</option>
+          <option>Rozwód bez orzekania o winie</option>
+          <option>Rozwód z orzeczeniem o winie</option>
+          <option>Podział majątku wspólnego</option>
+          <option>Opieka nad dziećmi / alimenty</option>
+          <option>Separacja prawna</option>
+          <option>Inne</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="b-wiadomosc">Krótki opis sytuacji (opcjonalnie)</label>
+        <textarea id="b-wiadomosc" name="wiadomosc" placeholder="W kilku zdaniach opisz swoją sytuację…"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Wyślij i umów konsultację →</button>
+      <p class="form-notice">
+        🔒 Dane są bezpieczne i chronione. Kontaktując się z kancelarią, wyrażasz zgodę
+        na przetwarzanie danych osobowych w celu obsługi zapytania.
+      </p>
+      <div id="form-success" style="display:none; text-align:center; padding:1.5rem 0;">
+        <div style="font-size:2rem; margin-bottom:.75rem;">✅</div>
+        <div style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--navy);margin-bottom:.4rem;">Dziękujemy!</div>
+        <p style="font-size:.9rem;color:var(--text-muted);font-weight:300;">Oddzwonimy do Ciebie w ciągu 2 godzin w dni robocze.</p>
+      </div>
+    </form>
+    <div style="text-align:center; margin-top:2.5rem; display:flex; gap:2rem; justify-content:center; flex-wrap:wrap;">
+      <a href="tel:+48605089552"            class="btn btn-white btn-lg">📞 605 089 552</a>
+      <a href="mailto:kancelaria@idzik.org.pl" class="btn btn-white btn-lg">✉ kancelaria@idzik.org.pl</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     STOPKA
+══════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Kancelaria Adwokacka Magdalena Idzik‑Cieśla</div>
+        <p class="footer-tagline">
+          Dyskretna i skuteczna pomoc prawna w sprawach rodzinnych.
+          Łomianki · Warszawa i Mazowieckie — od ponad 12 lat.
+        </p>
+        <div class="footer-contact">
+          <a href="tel:+48605089552">📞 605 089 552</a>
+          <a href="mailto:kancelaria@idzik.org.pl">✉ kancelaria@idzik.org.pl</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Usługi</h5>
+        <ul>
+          <li><a href="index.html#pomoc">Rozwód</a></li>
+          <li><a href="index.html#pomoc">Podział majątku</a></li>
+          <li><a href="index.html#pomoc">Opieka nad dziećmi</a></li>
+          <li><a href="index.html#pomoc">Alimenty</a></li>
+          <li><a href="index.html#pomoc">Mediacja</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Lokalizacje</h5>
+        <ul>
+          <li>ul. Bolkowska 2A/28</li>
+          <li>01-466 Warszawa</li>
+          <li style="margin-top:.5rem"><a href="#">Konsultacje online</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Nawigacja</h5>
+        <ul>
+          <li><a href="https://rozwodlomianki.pl/">Strona główna</a></li>
+          <li><a href="blog.html">Blog / Aktualności</a></li>
+          <li><a href="#kontakt">Bezpłatna konsultacja</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:.4rem;margin-bottom:.35rem;">
+        <span>© 2025 Kancelaria Adwokacka Magdalena Idzik-Cieśla. Wszelkie prawa zastrzeżone.</span>
+        <span>
+          <a href="polityka-prywatnosci.html" style="color:inherit;text-decoration:none;">Polityka prywatności</a>
+          &nbsp;·&nbsp;
+          <a href="rodo.html" style="color:inherit;text-decoration:none;">RODO</a>
+        </span>
+      </div>
+      <div class="footer-domains-line">
+        Inne lokalizacje: <a href="https://rozwod.waw.pl/">Warszawa</a> &nbsp;·&nbsp; <a href="https://rozwodbemowo.pl/">Bemowo</a> &nbsp;·&nbsp; <a href="https://rozwodbielany.pl/">Bielany</a> &nbsp;·&nbsp; <a href="https://rozwodzoliborz.pl/">Żoliborz</a> &nbsp;·&nbsp; <a href="https://rozwodwola.pl">Wola</a> &nbsp;·&nbsp; <a href="https://rozwodochota.pl/">Ochota</a> &nbsp;·&nbsp; <a href="https://rozwodmokotow.pl/">Mokotów</a> &nbsp;·&nbsp; <a href="https://rozwodtarchomin.pl/">Tarchomin</a> &nbsp;·&nbsp; <a href="https://rozwodlegionowo.pl/">Legionowo</a> &nbsp;·&nbsp; <a href="https://rozwodjablonna.pl/">Jabłonna</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
+<script src="assets/page.js"  defer></script>
+<script src="assets/blog.js"  defer></script>
+</body>
+</html>

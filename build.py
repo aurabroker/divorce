@@ -234,8 +234,9 @@ def build_page(d):
       <a href="#pomoc"   class="nav-link">Zakres pomocy</a>
       <a href="#proces"  class="nav-link">Jak działamy</a>
       <a href="#opinie"  class="nav-link">Opinie</a>
-      <a href="#faq"     class="nav-link">FAQ</a>
-      <a href="#kontakt" class="btn nav-cta">Bezpłatna konsultacja</a>
+      <a href="#faq"      class="nav-link">FAQ</a>
+      <a href="blog.html" class="nav-link" style="color:var(--accent);font-weight:600;">Blog</a>
+      <a href="#kontakt"  class="btn nav-cta">Bezpłatna konsultacja</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
