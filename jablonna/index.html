@@ -466,20 +466,18 @@
         Resztą zajmiemy się my.
       </p>
     </div>
-    <form id="contact-form" action="https://formspree.io/f/mkokeava" method="POST" class="form-card">
-      <input type="hidden" name="_next" value="https://rozwodjablonna.pl//dziekujemy.html">
-      <input type="hidden" name="_subject" value="Nowe zapytanie z rozwodjablonna.pl">
-      <input type="text" name="_gotcha" style="display:none">
+    <form id="contact-form" class="form-card">
+      <input type="hidden" name="access_key" value="be1e4321-2444-4205-a5de-2ba21c3d68dc">
       <div class="form-card-title">Umów bezpłatną konsultację</div>
       <p class="form-card-sub">Oddzwonimy w ciągu 2 godzin w dni robocze (8:00–18:00).</p>
       <div class="form-row">
         <div class="form-group">
           <label for="imie">Imię *</label>
-          <input type="text" id="imie" name="imie" placeholder="Jan" required autocomplete="given-name">
+          <input type="text" id="imie" name="name" placeholder="Jan" required autocomplete="given-name">
         </div>
         <div class="form-group">
           <label for="tel">Telefon *</label>
-          <input type="tel" id="tel" name="telefon" placeholder="+48 605 089 552" required autocomplete="tel">
+          <input type="tel" id="tel" name="phone" placeholder="+48 605 089 552" required autocomplete="tel">
         </div>
       </div>
       <div class="form-group">
@@ -500,9 +498,9 @@
       </div>
       <div class="form-group">
         <label for="wiadomosc">Krótki opis sytuacji (opcjonalnie)</label>
-        <textarea id="wiadomosc" name="wiadomosc" placeholder="W kilku zdaniach opisz swoją sytuację..."></textarea>
+        <textarea id="wiadomosc" name="message" placeholder="W kilku zdaniach opisz swoją sytuację..."></textarea>
       </div>
-      <button type="submit" class="form-submit">Wyślij i umów konsultację →</button>
+      <button id="submit-btn" type="submit" class="form-submit">Wyślij i umów konsultację →</button>
       <p class="form-notice">
         🔒 Dane są bezpieczne i chronione. Kontaktując się z kancelarią, wyrażasz zgodę
         na przetwarzanie danych osobowych w celu obsługi zapytania.
@@ -607,6 +605,38 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('mouseout',  () => { btn.style.transform = 'scale(1)';   btn.style.background = 'rgba(255,255,255,.12)'; });
   }
 });
+
+(function () {
+  var form      = document.getElementById('contact-form');
+  var submitBtn = document.getElementById('submit-btn');
+  if (!form || !submitBtn) return;
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var formData = new FormData(form);
+    formData.append('access_key', 'be1e4321-2444-4205-a5de-2ba21c3d68dc');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wysyłanie…';
+    try {
+      var res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+      var data = await res.json();
+      if (res.ok) {
+        var successBox = document.getElementById('form-success');
+        if (successBox) { successBox.style.display = 'block'; }
+        form.reset();
+        submitBtn.textContent = 'Wysłano ✓';
+      } else {
+        alert('Błąd: ' + (data.message || 'Spróbuj ponownie.'));
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Wyślij i umów konsultację →';
+      }
+    } catch (_) {
+      alert('Coś poszło nie tak. Sprawdź połączenie i spróbuj ponownie.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Wyślij i umów konsultację →';
+    }
+  });
+})();
 </script>
 </body>
 </html>
