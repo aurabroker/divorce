@@ -245,7 +245,8 @@ function initForm() {
 
     try {
       const res  = await fetch(W3F_ENDPOINT, { method: "POST", body: data });
-      const json = await res.json();
+      let json = {};
+      try { json = await res.json(); } catch { json = {}; }
 
       if (res.ok) {
         showFormSuccess(form, btn);
