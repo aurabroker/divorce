@@ -224,7 +224,10 @@ function initFAQ() {
   });
 }
 
-/* ── FORMULARZ → FORMSPREE ───────────────────────────────── */
+/* ── FORMULARZ → WEB3FORMS ───────────────────────────────── */
+const W3F_ENDPOINT = "https://api.web3forms.com/submit";
+const W3F_KEY      = "be1e4321-2444-4205-a5de-2ba21c3d68dc";
+
 function initForm() {
   const form = document.getElementById("contact-form");
   if (!form) return;
@@ -238,18 +241,16 @@ function initForm() {
     btn.textContent = "Wysyłanie...";
 
     const data = new FormData(form);
+    data.append("access_key", W3F_KEY);
 
     try {
-      const res = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" }
-      });
+      const res  = await fetch(W3F_ENDPOINT, { method: "POST", body: data });
+      const json = await res.json();
 
       if (res.ok) {
         showFormSuccess(form, btn);
       } else {
-        showFormError(btn, originalText);
+        showFormError(btn, originalText, json.message);
       }
     } catch {
       showFormError(btn, originalText);
@@ -275,14 +276,14 @@ function showFormSuccess(form, btn) {
   }
 }
 
-function showFormError(btn, originalText) {
+function showFormError(btn, originalText, message) {
   btn.disabled = false;
-  btn.textContent = "Błąd — spróbuj ponownie";
+  btn.textContent = message ? "Błąd: " + message : "Błąd — spróbuj ponownie";
   btn.style.background = "#A32D2D";
   setTimeout(() => {
     btn.textContent = originalText;
     btn.style.background = "";
-  }, 3000);
+  }, 4000);
 }
 
 /* ── SCROLL SPY (aktywny link w nav) ────────────────────── */

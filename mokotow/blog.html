@@ -589,37 +589,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
 <script src="assets/page.js?v=202605142000"  defer></script>
 <script src="assets/blog.js?v=202605142000"  defer>
-(function () {
-  var form      = document.getElementById('contact-form');
-  var submitBtn = document.getElementById('submit-btn');
-  if (!form || !submitBtn) return;
-
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    var formData = new FormData(form);
-    formData.append('access_key', 'be1e4321-2444-4205-a5de-2ba21c3d68dc');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Wysyłanie…';
-    try {
-      var res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
-      var data = await res.json();
-      if (res.ok) {
-        var successBox = document.getElementById('form-success');
-        if (successBox) { successBox.style.display = 'block'; }
-        form.reset();
-        submitBtn.textContent = 'Wysłano ✓';
-      } else {
-        alert('Błąd: ' + (data.message || 'Spróbuj ponownie.'));
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Wyślij i umów konsultację →';
-      }
-    } catch (_) {
-      alert('Coś poszło nie tak. Sprawdź połączenie i spróbuj ponownie.');
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Wyślij i umów konsultację →';
-    }
-  });
-})();
 </script>
 </body>
 </html>
