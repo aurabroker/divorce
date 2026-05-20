@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initAnimations();
   initFAQ();
   initForm();
+  initForm2();
   initScrollHighlight();
 });
 
@@ -285,6 +286,47 @@ function showFormError(btn, originalText, message) {
     btn.textContent = originalText;
     btn.style.background = "";
   }, 4000);
+}
+
+/* ── FORMULARZ DODATKOWY (id="form") ────────────────────── */
+function initForm2() {
+  const form = document.getElementById("form");
+  if (!form) return;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  if (!submitBtn) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    formData.append("access_key", "c878bdb5-3d83-4f09-b0c3-0c9bd2138663");
+
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      let data = {};
+      try { data = await response.json(); } catch { data = {}; }
+
+      if (response.ok) {
+        alert("Success! Your message has been sent.");
+        form.reset();
+      } else {
+        alert("Error: " + (data.message || "Please try again."));
+      }
+    } catch {
+      alert("Something went wrong. Please try again.");
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  });
 }
 
 /* ── SCROLL SPY (aktywny link w nav) ────────────────────── */
