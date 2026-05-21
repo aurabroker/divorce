@@ -242,7 +242,7 @@ function initForm() {
     btn.textContent = "Wysyłanie...";
 
     const data = new FormData(form);
-    data.append("access_key", W3F_KEY);
+    if (!data.has("access_key")) data.append("access_key", W3F_KEY);
 
     try {
       const res  = await fetch(W3F_ENDPOINT, { method: "POST", body: data });
