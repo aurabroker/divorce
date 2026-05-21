@@ -727,7 +727,7 @@ def build_page(d):
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="/assets/anime.min.js"></script>
 <script src="assets/page.js"></script>
 <script>
 function playVideo() {{
@@ -812,7 +812,7 @@ def build_dziekujemy(d):
   </div>
 </section>
 </main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="/assets/anime.min.js"></script>
 <script src="assets/page.js"></script>
 </body>
 </html>"""

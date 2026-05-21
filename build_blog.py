@@ -623,7 +623,7 @@ def build_blog_page(d: dict) -> str:
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
+<script src="/assets/anime.min.js" defer></script>
 <script src="assets/page.js?v={BUILD_VER}"  defer></script>
 <script src="assets/blog.js?v={BUILD_VER}"  defer></script>
 </body>
