@@ -249,7 +249,7 @@ function initForm() {
       let json = {};
       try { json = await res.json(); } catch { json = {}; }
 
-      if (res.ok) {
+      if (res.ok && json.success) {
         showFormSuccess(form, btn);
       } else {
         showFormError(btn, originalText, json.message);
