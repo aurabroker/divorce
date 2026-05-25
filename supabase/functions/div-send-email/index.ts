@@ -190,7 +190,7 @@ Deno.serve(async (req: Request) => {
 </body></html>`;
 
     await sendEmail(apiKey, {
-      from: "kancelaria@rozwod.waw.pl",
+      from: "no-reply@rozwod.waw.pl",
       to: [email],
       subject: "Potwierdzenie zgłoszenia — Kancelaria Idzik-Cieśla",
       html: confirmHtml,
