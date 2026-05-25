@@ -34,7 +34,8 @@
       districtKey:  "mokotow",
       accentColor:  "#2D4A6B",
       accentLight:  "#5A7FA8",
-      accentBg:     "#EEF2F8"
+      accentBg:     "#EEF2F8",
+      domain:       "rozwodmokotow.pl"
     };
   </script>
 
@@ -466,10 +467,8 @@
         Resztą zajmiemy się my.
       </p>
     </div>
-    <form id="contact-form" action="https://formspree.io/f/mkokeava" method="POST" class="form-card">
-      <input type="hidden" name="_next" value="https://rozwodmokotow.pl//dziekujemy.html">
-      <input type="hidden" name="_subject" value="Nowe zapytanie z rozwodmokotow.pl">
-      <input type="text" name="_gotcha" style="display:none">
+    <form id="contact-form" action="https://kukvgsjrmrqtzhkszzum.supabase.co/functions/v1/div-send-email" method="POST" class="form-card">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <div class="form-card-title">Umów bezpłatną konsultację</div>
       <p class="form-card-sub">Oddzwonimy w ciągu 2 godzin w dni robocze (8:00–18:00).</p>
       <div class="form-row">

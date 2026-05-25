@@ -34,7 +34,8 @@
       districtKey:  "tarchomin",
       accentColor:  "#4A6B1A",
       accentLight:  "#7FA83C",
-      accentBg:     "#F2F7EE"
+      accentBg:     "#F2F7EE",
+      domain:       "rozwodtarchomin.pl"
     };
   </script>
 
@@ -466,10 +467,8 @@
         Resztą zajmiemy się my.
       </p>
     </div>
-    <form id="contact-form" action="https://formspree.io/f/mkokeava" method="POST" class="form-card">
-      <input type="hidden" name="_next" value="https://rozwodtarchomin.pl//dziekujemy.html">
-      <input type="hidden" name="_subject" value="Nowe zapytanie z rozwodtarchomin.pl">
-      <input type="text" name="_gotcha" style="display:none">
+    <form id="contact-form" action="https://kukvgsjrmrqtzhkszzum.supabase.co/functions/v1/div-send-email" method="POST" class="form-card">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <div class="form-card-title">Umów bezpłatną konsultację</div>
       <p class="form-card-sub">Oddzwonimy w ciągu 2 godzin w dni robocze (8:00–18:00).</p>
       <div class="form-row">

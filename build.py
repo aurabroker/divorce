@@ -187,7 +187,8 @@ def build_page(d):
       districtKey:  "{d['key']}",
       accentColor:  "{d['accent']}",
       accentLight:  "{d['accent_light']}",
-      accentBg:     "{d['accent_bg']}"
+      accentBg:     "{d['accent_bg']}",
+      domain:       "{d['domain']}"
     }};
   </script>
 
@@ -619,10 +620,8 @@ def build_page(d):
         Resztą zajmiemy się my.
       </p>
     </div>
-    <form id="contact-form" action="https://formspree.io/f/mkokeava" method="POST" class="form-card">
-      <input type="hidden" name="_next" value="{d['url']}/dziekujemy.html">
-      <input type="hidden" name="_subject" value="Nowe zapytanie z {d['domain']}">
-      <input type="text" name="_gotcha" style="display:none">
+    <form id="contact-form" action="https://kukvgsjrmrqtzhkszzum.supabase.co/functions/v1/div-send-email" method="POST" class="form-card">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <div class="form-card-title">Umów bezpłatną konsultację</div>
       <p class="form-card-sub">Oddzwonimy w ciągu 2 godzin w dni robocze (8:00–18:00).</p>
       <div class="form-row">
@@ -771,7 +770,8 @@ def build_dziekujemy(d):
       districtKey:  "{d['key']}",
       accentColor:  "{d['accent']}",
       accentLight:  "{d['accent_light']}",
-      accentBg:     "{d['accent_bg']}"
+      accentBg:     "{d['accent_bg']}",
+      domain:       "{d['domain']}"
     }};
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">

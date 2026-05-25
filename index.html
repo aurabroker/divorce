@@ -24,7 +24,8 @@
       districtKey:  "warszawa",          // klucz do podkreślenia w tickerze
       accentColor:  "#8B5E1A",           // kolor akcentu (złoty = główna domena)
       accentLight:  "#C49A3C",
-      accentBg:     "#FDF6E9"
+      accentBg:     "#FDF6E9",
+      domain:       "rozwod.waw.pl"
     };
   </script>
 
@@ -492,25 +493,14 @@
       </p>
     </div>
 
-    <!-- ══════════════════════════════════════════
-         FORMULARZ → FORMSPREE
-         1. Zarejestruj się na formspree.io
-         2. Utwórz formularz dla kancelaria@idzik.org.pl
-         3. Zastąp {TWOJE_ID} identyfikatorem z Formspree
-         Przykład action: https://formspree.io/f/xkgwnpab
-    ═══════════════════════════════════════════ -->
     <form
       id="contact-form"
-      action="https://formspree.io/f/mkokeava"
+      action="https://kukvgsjrmrqtzhkszzum.supabase.co/functions/v1/div-send-email"
       method="POST"
       class="form-card"
     >
-      <!-- Pole ukryte: przekierowanie po wysłaniu -->
-      <input type="hidden" name="_next" value="https://rozwod.waw.pl/dziekujemy.html">
-      <!-- Temat e-maila -->
-      <input type="hidden" name="_subject" value="Nowe zapytanie z rozwod.waw.pl">
       <!-- Honeypot antyspamowy -->
-      <input type="text" name="_gotcha" style="display:none">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
       <div class="form-card-title">Umów bezpłatną konsultację</div>
       <p class="form-card-sub">Oddzwonimy w ciągu 2 godzin w dni robocze (8:00–18:00).</p>

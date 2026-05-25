@@ -224,7 +224,7 @@ function initFAQ() {
   });
 }
 
-/* ── FORMULARZ → FORMSPREE ───────────────────────────────── */
+/* ── FORMULARZ → RESEND (via Supabase Edge Function) ─────── */
 function initForm() {
   const form = document.getElementById("contact-form");
   if (!form) return;
@@ -237,13 +237,33 @@ function initForm() {
     btn.disabled = true;
     btn.textContent = "Wysyłanie...";
 
-    const data = new FormData(form);
+    const fd = new FormData(form);
+    const cfg = window.SITE_CONFIG || {};
+
+    // Honeypot — silent success for bots
+    if (fd.get("_gotcha")) {
+      showFormSuccess(form, btn);
+      return;
+    }
+
+    const payload = {
+      imie:      (fd.get("imie")      || "").toString().trim(),
+      telefon:   (fd.get("telefon")   || "").toString().trim(),
+      email:     (fd.get("email")     || "").toString().trim(),
+      temat:     (fd.get("temat")     || "").toString().trim(),
+      wiadomosc: (fd.get("wiadomosc") || "").toString().trim(),
+      district:  cfg.district || "",
+      domain:    cfg.domain   || "",
+    };
 
     try {
       const res = await fetch(form.action, {
         method: "POST",
-        body: data,
-        headers: { Accept: "application/json" }
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
       });
 
       if (res.ok) {
