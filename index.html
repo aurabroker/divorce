@@ -479,6 +479,55 @@
   </div>
 </section>
 
+<!-- OPINIE KLIENTÓW (dynamiczne) -->
+<section class="section" style="background:var(--accent-bg);border-top:1px solid rgba(0,0,0,.07);">
+  <div class="container">
+    <div class="section-header section-center text-center">
+      <p class="section-label">Opinie klientów</p>
+      <h2 class="section-title">Co mówią <em>nasi klienci</em></h2>
+      <p class="section-desc">Opinie potwierdzonych klientów z Warszawy i okolic — każda ręcznie weryfikowana</p>
+    </div>
+    <div id="homepage-reviews" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.25rem;margin-bottom:2.5rem;">
+      <div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:2rem 0;">Ładowanie opinii…</div>
+    </div>
+    <div style="text-align:center;">
+      <a href="opinia.html" class="btn btn-primary">Wystaw opinię →</a>
+    </div>
+  </div>
+</section>
+<script>
+(async () => {
+  const grid = document.getElementById('homepage-reviews');
+  if (!grid) return;
+  try {
+    const p = new URLSearchParams({select:'name,city,rating,comment,platform',approved:'eq.true',order:'created_at.desc',limit:'6'});
+    const res = await fetch('https://kukvgsjrmrqtzhkszzum.supabase.co/rest/v1/div_review?' + p, {headers:{apikey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt1a3Znc2pybXJxdHpoa3N6enVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5MTI0NzYsImV4cCI6MjA4ODQ4ODQ3Nn0.wOB-4CJTcRksSUY7WD7CXEccTKNxPIVF8AT8hczS5zY',Accept:'application/json'}});
+    const rows = await res.json();
+    const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    if (!Array.isArray(rows) || !rows.length) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:2rem;border:2px dashed #ddd;border-radius:1rem;">Bądź pierwszą osobą, która wystawi opinię!</div>';
+      return;
+    }
+    grid.innerHTML = rows.map(r => {
+      const ini = esc(r.name).split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();
+      const stars = '★'.repeat(r.rating) + '<span style="color:#ddd">' + '★'.repeat(5-r.rating) + '</span>';
+      const txt = r.comment ? '„' + esc(r.comment) + '"' : '<em style="color:var(--text-muted)">Brak komentarza</em>';
+      return `<div class="testimonial" style="display:flex;flex-direction:column;">
+        <div class="t-stars" style="margin-bottom:.4rem;">${stars}</div>
+        <p class="t-quote" style="flex:1;margin-bottom:.75rem;">${txt}</p>
+        <div class="t-author">
+          <div class="t-avatar">${ini}</div>
+          <div>
+            <div class="t-name">${esc(r.name)}</div>
+            <div class="t-meta">${esc(r.city)} · <span style="font-size:.72rem;background:var(--accent);color:#fff;padding:1px 7px;border-radius:10px;margin-left:3px;">${esc(r.platform)}</span></div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  } catch(e) { grid.innerHTML = ''; }
+})();
+</script>
+
 <!-- ═══════════════════════════════════════════════
      KONTAKT / FORMULARZ
 ════════════════════════════════════════════════ -->
