@@ -501,51 +501,6 @@ def build_page(d):
   </div>
 </section>
 
-<!-- OPINIE -->
-<section class="section" id="opinie">
-  <div class="container">
-    <div class="section-header section-center text-center">
-      <p class="section-label">Opinie klientów</p>
-      <h2 class="section-title">Co mówią <em>nasi klienci</em></h2>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-quote">„Profesjonalizm i spokój — to co zapamiętałem. Sprawa była skomplikowana, ale przez cały czas miałem poczucie, że wszystko jest pod kontrolą. Serdecznie polecam."</p>
-        <div class="t-author">
-          <div class="t-avatar">MK</div>
-          <div>
-            <div class="t-name">Marek K.</div>
-            <div class="t-meta">Sprawa rozwodowa · Warszawa</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-quote">„{d['t_quote']}"</p>
-        <div class="t-author">
-          <div class="t-avatar">{d['t_ini']}</div>
-          <div>
-            <div class="t-name">{d['t_name']}</div>
-            <div class="t-meta">{d['t_topic']}</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-quote">„Sprawny kontakt, zawsze dostępni gdy potrzebowałem odpowiedzi. Każde pytanie wyjaśnione na bieżąco. Merytoryczna pomoc na każdym etapie."</p>
-        <div class="t-author">
-          <div class="t-avatar">JN</div>
-          <div>
-            <div class="t-name">Jacek N.</div>
-            <div class="t-meta">Podział majątku · Warszawa</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section class="section faq-section" id="faq">
   <div class="container">
@@ -853,7 +808,7 @@ def build_sitemap(d, lastmod="2026-05-05"):
 
 def reviews_section_html():
     return f"""<!-- OPINIE KLIENTÓW (dynamiczne) -->
-<section class="section" style="background:var(--accent-bg);border-top:1px solid rgba(0,0,0,.07);">
+<section class="section" id="opinie" style="background:var(--accent-bg);border-top:1px solid rgba(0,0,0,.07);">
   <div class="container">
     <div class="section-header section-center text-center">
       <p class="section-label">Opinie klientów</p>
@@ -1110,14 +1065,18 @@ def build_opinia(d):
         style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-muted);">×</button>
     </div>
     <div id="admin-login">
-      <p style="font-size:.9rem;color:var(--text-muted);margin-bottom:1rem;">Podaj hasło admina:</p>
-      <div style="display:flex;gap:.75rem;">
-        <input type="password" id="admin-pwd" placeholder="hasło…"
-          style="flex:1;padding:.6rem .9rem;border:1px solid #ddd;border-radius:.5rem;font-size:.9rem;">
-        <button id="admin-login-btn" class="btn btn-primary" style="white-space:nowrap;">Zaloguj</button>
+      <p style="font-size:.9rem;color:var(--text-muted);margin-bottom:1rem;">Zaloguj się jako admin:</p>
+      <div style="display:flex;flex-direction:column;gap:.5rem;">
+        <input type="email" id="admin-email" placeholder="e-mail…"
+          style="padding:.6rem .9rem;border:1px solid #ddd;border-radius:.5rem;font-size:.9rem;">
+        <div style="display:flex;gap:.75rem;">
+          <input type="password" id="admin-pwd" placeholder="hasło…"
+            style="flex:1;padding:.6rem .9rem;border:1px solid #ddd;border-radius:.5rem;font-size:.9rem;">
+          <button id="admin-login-btn" class="btn btn-primary" style="white-space:nowrap;">Zaloguj</button>
+        </div>
       </div>
       <p id="admin-err" style="color:#dc2626;font-size:.85rem;margin-top:.5rem;display:none;">
-        Nieprawidłowe hasło
+        Nieprawidłowe dane lub brak uprawnień
       </p>
     </div>
     <div id="admin-content" style="display:none;">
@@ -1245,7 +1204,7 @@ async function loadReviews() {{
 loadReviews();
 
 // ── Admin panel ─────────────────────────────────────────────────────
-let adminPwd = '';
+let adminToken = '';
 const overlay    = document.getElementById('admin-overlay');
 const loginDiv   = document.getElementById('admin-login');
 const contentDiv = document.getElementById('admin-content');
@@ -1260,13 +1219,25 @@ document.getElementById('admin-pwd').addEventListener('keydown', e => {{
 }});
 
 document.getElementById('admin-login-btn').addEventListener('click', async () => {{
-  adminPwd = document.getElementById('admin-pwd').value;
-  const res = await fetch(ADM_URL, {{
-    method:'POST', headers:{{'Content-Type':'application/json'}},
-    body: JSON.stringify({{action:'list', password:adminPwd}})
+  const email  = document.getElementById('admin-email').value.trim();
+  const pwd    = document.getElementById('admin-pwd').value;
+  const errEl  = document.getElementById('admin-err');
+
+  const authRes = await fetch(SB_URL + '/auth/v1/token?grant_type=password', {{
+    method: 'POST',
+    headers: {{ 'Content-Type': 'application/json', apikey: SB_KEY }},
+    body: JSON.stringify({{ email, password: pwd }})
   }});
-  if (res.status===401) {{ document.getElementById('admin-err').style.display='block'; return; }}
-  document.getElementById('admin-err').style.display='none';
+  if (!authRes.ok) {{ errEl.style.display='block'; return; }}
+  adminToken = (await authRes.json()).access_token;
+
+  const res = await fetch(ADM_URL, {{
+    method: 'POST',
+    headers: {{ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + adminToken }},
+    body: JSON.stringify({{ action: 'list' }})
+  }});
+  if (res.status === 401 || res.status === 403) {{ errEl.style.display='block'; adminToken=''; return; }}
+  errEl.style.display='none';
   loginDiv.style.display   = 'none';
   contentDiv.style.display = 'block';
   renderAdmin(await res.json());
@@ -1274,12 +1245,14 @@ document.getElementById('admin-login-btn').addEventListener('click', async () =>
 
 async function adminAction(action, id) {{
   await fetch(ADM_URL, {{
-    method:'POST', headers:{{'Content-Type':'application/json'}},
-    body: JSON.stringify({{action, id, password:adminPwd}})
+    method: 'POST',
+    headers: {{ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + adminToken }},
+    body: JSON.stringify({{ action, id }})
   }});
-  const res  = await fetch(ADM_URL, {{
-    method:'POST', headers:{{'Content-Type':'application/json'}},
-    body: JSON.stringify({{action:'list', password:adminPwd}})
+  const res = await fetch(ADM_URL, {{
+    method: 'POST',
+    headers: {{ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + adminToken }},
+    body: JSON.stringify({{ action: 'list' }})
   }});
   renderAdmin(await res.json());
   loadReviews();

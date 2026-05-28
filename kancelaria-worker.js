@@ -254,12 +254,15 @@ function buildOpiniaHTML(cfg) {
       <button id="admin-close" style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-muted);">\xD7</button>
     </div>
     <div id="admin-login">
-      <p style="font-size:.9rem;color:var(--text-muted);margin-bottom:1rem;">Podaj hasło admina:</p>
-      <div style="display:flex;gap:.75rem;">
-        <input type="password" id="admin-pwd" placeholder="hasło…" style="flex:1;padding:.6rem .9rem;border:1px solid #ddd;border-radius:.5rem;font-size:.9rem;">
-        <button id="admin-login-btn" class="btn btn-primary" style="white-space:nowrap;">Zaloguj</button>
+      <p style="font-size:.9rem;color:var(--text-muted);margin-bottom:1rem;">Zaloguj się jako admin:</p>
+      <div style="display:flex;flex-direction:column;gap:.5rem;">
+        <input type="email" id="admin-email" placeholder="e-mail…" style="padding:.6rem .9rem;border:1px solid #ddd;border-radius:.5rem;font-size:.9rem;">
+        <div style="display:flex;gap:.75rem;">
+          <input type="password" id="admin-pwd" placeholder="hasło…" style="flex:1;padding:.6rem .9rem;border:1px solid #ddd;border-radius:.5rem;font-size:.9rem;">
+          <button id="admin-login-btn" class="btn btn-primary" style="white-space:nowrap;">Zaloguj</button>
+        </div>
       </div>
-      <p id="admin-err" style="color:#dc2626;font-size:.85rem;margin-top:.5rem;display:none;">Nieprawiłowe hasło</p>
+      <p id="admin-err" style="color:#dc2626;font-size:.85rem;margin-top:.5rem;display:none;">Nieprawidłowe dane lub brak uprawnień</p>
     </div>
     <div id="admin-content" style="display:none;"><div id="admin-list"></div></div>
   </div>
@@ -319,7 +322,7 @@ async function loadReviews(){
   }catch(e){grid.innerHTML='<div style="text-align:center;color:var(--text-muted);padding:2rem;">Nie udało się załadować opinii.</div>';}
 }
 loadReviews();
-let adminPwd='';
+let adminToken='';
 const overlay=document.getElementById('admin-overlay');
 const loginDiv=document.getElementById('admin-login');
 const contentDiv=document.getElementById('admin-content');
@@ -329,16 +332,21 @@ document.getElementById('admin-close').addEventListener('click',()=>{overlay.sty
 overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.style.display='none';});
 document.getElementById('admin-pwd').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('admin-login-btn').click();});
 document.getElementById('admin-login-btn').addEventListener('click',async()=>{
-  adminPwd=document.getElementById('admin-pwd').value;
-  const res=await fetch(ADM_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'list',password:adminPwd})});
-  if(res.status===401){document.getElementById('admin-err').style.display='block';return;}
-  document.getElementById('admin-err').style.display='none';
+  const email=document.getElementById('admin-email').value.trim();
+  const pwd=document.getElementById('admin-pwd').value;
+  const errEl=document.getElementById('admin-err');
+  const authRes=await fetch(SB_URL+'/auth/v1/token?grant_type=password',{method:'POST',headers:{'Content-Type':'application/json',apikey:SB_KEY},body:JSON.stringify({email,password:pwd})});
+  if(!authRes.ok){errEl.style.display='block';return;}
+  adminToken=(await authRes.json()).access_token;
+  const res=await fetch(ADM_URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+adminToken},body:JSON.stringify({action:'list'})});
+  if(res.status===401||res.status===403){errEl.style.display='block';adminToken='';return;}
+  errEl.style.display='none';
   loginDiv.style.display='none';contentDiv.style.display='block';
   renderAdmin(await res.json());
 });
 async function adminAction(action,id){
-  await fetch(ADM_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,id,password:adminPwd})});
-  renderAdmin(await(await fetch(ADM_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'list',password:adminPwd})})).json());
+  await fetch(ADM_URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+adminToken},body:JSON.stringify({action,id})});
+  renderAdmin(await(await fetch(ADM_URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+adminToken},body:JSON.stringify({action:'list'})})).json());
   loadReviews();
 }
 function renderAdmin(rows){
