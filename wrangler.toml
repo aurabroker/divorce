@@ -1,0 +1,7 @@
+name = "kancelaria-worker"
+main = "kancelaria-worker.js"
+compatibility_date = "2024-01-01"
+account_id = "1f52c869d091ebf55a2d1789dad4842d"
+
+[build]
+command = ""
