@@ -123,7 +123,6 @@ ${PAGE_JS}`;
 }
 __name(buildPageJS, "buildPageJS");
 function buildOpiniaHTML(cfg) {
-  const ADM_URL = SUPABASE_URL + "/functions/v1/review-admin";
   return `<!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -244,34 +243,12 @@ function buildOpiniaHTML(cfg) {
   </div>
   <div class="footer-bottom"><div class="container"><span>\xA9 2025 Kancelaria Adwokacka Magdalena Idzik-Cieśla. Wszelkie prawa zastrzeżone.</span></div></div>
 </footer>
-<div style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:100;">
-  <button id="admin-toggle" title="Panel admina" style="width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.1);border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;">⚙</button>
-</div>
-<div id="admin-overlay" style="position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.5);">
-  <div style="background:#fff;border-radius:var(--radius-lg);padding:2rem;max-width:780px;width:calc(100% - 2rem);max-height:82vh;overflow-y:auto;box-shadow:var(--shadow-lg);">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
-      <h3 style="margin:0;font-family:var(--serif);">Panel moderacji opinii</h3>
-      <button id="admin-close" style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-muted);">\xD7</button>
     </div>
-    <div id="admin-login">
-      <p style="font-size:.9rem;color:var(--text-muted);margin-bottom:1rem;">Zaloguj się jako admin:</p>
-      <div style="display:flex;flex-direction:column;gap:.5rem;">
-        <input type="email" id="admin-email" placeholder="e-mail…" style="padding:.6rem .9rem;border:1px solid #ddd;border-radius:.5rem;font-size:.9rem;">
-        <div style="display:flex;gap:.75rem;">
-          <input type="password" id="admin-pwd" placeholder="hasło…" style="flex:1;padding:.6rem .9rem;border:1px solid #ddd;border-radius:.5rem;font-size:.9rem;">
-          <button id="admin-login-btn" class="btn btn-primary" style="white-space:nowrap;">Zaloguj</button>
-        </div>
-      </div>
-      <p id="admin-err" style="color:#dc2626;font-size:.85rem;margin-top:.5rem;display:none;">Nieprawidłowe dane lub brak uprawnień</p>
-    </div>
-    <div id="admin-content" style="display:none;"><div id="admin-list"></div></div>
-  </div>
-</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"><\/script>
 <script src="/assets/page.js"><\/script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1/dist/confetti.browser.min.js"><\/script>
 <script>
-const SB_URL='${SUPABASE_URL}',SB_KEY='${SUPABASE_ANON}',ADM_URL='${ADM_URL}',PLATFORM='${cfg.district}';
+const SB_URL='${SUPABASE_URL}',SB_KEY='${SUPABASE_ANON}',PLATFORM='${cfg.district}';
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const starBtns=[...document.querySelectorAll('.star-btn')];
 const ratingInput=document.getElementById('rating-val');
@@ -322,55 +299,6 @@ async function loadReviews(){
   }catch(e){grid.innerHTML='<div style="text-align:center;color:var(--text-muted);padding:2rem;">Nie udało się załadować opinii.</div>';}
 }
 loadReviews();
-let adminToken='';
-const overlay=document.getElementById('admin-overlay');
-const loginDiv=document.getElementById('admin-login');
-const contentDiv=document.getElementById('admin-content');
-const listDiv=document.getElementById('admin-list');
-document.getElementById('admin-toggle').addEventListener('click',()=>{overlay.style.display='flex';});
-document.getElementById('admin-close').addEventListener('click',()=>{overlay.style.display='none';});
-overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.style.display='none';});
-document.getElementById('admin-pwd').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('admin-login-btn').click();});
-document.getElementById('admin-login-btn').addEventListener('click',async()=>{
-  const email=document.getElementById('admin-email').value.trim();
-  const pwd=document.getElementById('admin-pwd').value;
-  const errEl=document.getElementById('admin-err');
-  const authRes=await fetch(SB_URL+'/auth/v1/token?grant_type=password',{method:'POST',headers:{'Content-Type':'application/json',apikey:SB_KEY},body:JSON.stringify({email,password:pwd})});
-  if(!authRes.ok){errEl.style.display='block';return;}
-  adminToken=(await authRes.json()).access_token;
-  const res=await fetch(ADM_URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+adminToken},body:JSON.stringify({action:'list'})});
-  if(res.status===401||res.status===403){errEl.style.display='block';adminToken='';return;}
-  errEl.style.display='none';
-  loginDiv.style.display='none';contentDiv.style.display='block';
-  renderAdmin(await res.json());
-});
-async function adminAction(action,id){
-  await fetch(ADM_URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+adminToken},body:JSON.stringify({action,id})});
-  renderAdmin(await(await fetch(ADM_URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+adminToken},body:JSON.stringify({action:'list'})})).json());
-  loadReviews();
-}
-function renderAdmin(rows){
-  if(!rows.length){listDiv.innerHTML='<p style="color:var(--text-muted)">Brak opinii.</p>';return;}
-  const pending=rows.filter(r=>!r.approved),approved=rows.filter(r=>r.approved);
-  listDiv.innerHTML=
-    (pending.length?'<h4 style="margin:.5rem 0 .75rem;color:#f59e0b;">Oczekujące ('+pending.length+')</h4>'+renderRows(pending,true):'')+
-    (approved.length?'<h4 style="margin:1.5rem 0 .75rem;">Zatwierdzone ('+approved.length+')</h4>'+renderRows(approved,false):'');
-}
-function renderRows(rows,isPending){
-  return rows.map(r=>
-    '<div class="admin-row"><div style="flex:1;min-width:0;">'+
-    '<div style="font-weight:600;font-size:.9rem;">'+esc(r.name)+' \xB7 '+esc(r.city)+
-    ' <span class="admin-badge'+(isPending?' pending':'')+'">' +esc(r.platform)+'</span></div>'+
-    '<div style="font-size:.8rem;color:var(--text-muted);">'+(r.zawod?esc(r.zawod)+' \xB7 ':'')+'★'.repeat(r.rating)+' \xB7 '+new Date(r.created_at).toLocaleDateString('pl-PL')+'</div>'+
-    (r.comment?'<div style="font-size:.85rem;margin-top:.3rem;color:var(--navy);">&quot;'+esc(r.comment)+'&quot;</div>':'')+
-    '<div class="admin-actions">'+
-    (isPending
-      ?'<button class="admin-btn approve" onclick="adminAction(\'approve\',\''+r.id+'\')">Zatwierdź</button>'
-      :'<button class="admin-btn reject" onclick="adminAction(\'reject\',\''+r.id+'\')">Cofnij</button>')+
-    '<button class="admin-btn del" onclick="if(confirm(\'Usunąć?\')) adminAction(\'delete\',\''+r.id+'\')">Usuń</button>'+
-    '</div></div></div>'
-  ).join('');
-}
 <\/script>
 </body>
 </html>`;
