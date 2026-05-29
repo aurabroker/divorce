@@ -892,17 +892,6 @@ def build_opinia(d):
     .star-btn.lit  {{ color:var(--accent); }}
     .star-btn:hover {{ transform:scale(1.2); }}
     #review-list {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:1.25rem; }}
-    .admin-row {{ display:flex; align-items:flex-start; gap:1rem;
-                  padding:.75rem 0; border-bottom:1px solid rgba(0,0,0,.06); }}
-    .admin-row:last-child {{ border-bottom:none; }}
-    .admin-badge {{ font-size:.72rem; padding:1px 8px; border-radius:10px;
-                    background:var(--accent); color:#fff; margin-left:4px; }}
-    .admin-badge.pending {{ background:#f59e0b; }}
-    .admin-actions {{ display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.4rem; }}
-    .admin-btn {{ font-size:.78rem; padding:4px 12px; border-radius:6px; border:1px solid; cursor:pointer; }}
-    .admin-btn.approve {{ background:#16a34a; color:#fff; border-color:#16a34a; }}
-    .admin-btn.reject  {{ background:#f59e0b; color:#fff; border-color:#f59e0b; }}
-    .admin-btn.del     {{ background:#dc2626; color:#fff; border-color:#dc2626; }}
   </style>
 </head>
 <body>
@@ -1043,47 +1032,6 @@ def build_opinia(d):
   </div>
 </footer>
 
-<!-- PRZYCISK ADMINA -->
-<div style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:100;">
-  <button id="admin-toggle" title="Panel admina"
-    style="width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.1);border:none;
-           cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;
-           transition:background .2s;" onmouseover="this.style.background='rgba(0,0,0,.2)'"
-    onmouseout="this.style.background='rgba(0,0,0,.1)'">⚙</button>
-</div>
-
-<!-- NAKŁADKA ADMINA -->
-<div id="admin-overlay"
-  style="position:fixed;inset:0;z-index:200;display:none;align-items:center;
-         justify-content:center;background:rgba(0,0,0,.5);">
-  <div style="background:#fff;border-radius:var(--radius-lg);padding:2rem;
-              max-width:780px;width:calc(100% - 2rem);max-height:82vh;
-              overflow-y:auto;box-shadow:var(--shadow-lg);">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
-      <h3 style="margin:0;font-family:var(--serif);">Panel moderacji opinii</h3>
-      <button id="admin-close"
-        style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-muted);">×</button>
-    </div>
-    <div id="admin-login">
-      <p style="font-size:.9rem;color:var(--text-muted);margin-bottom:1rem;">Zaloguj się jako admin:</p>
-      <div style="display:flex;flex-direction:column;gap:.5rem;">
-        <input type="email" id="admin-email" placeholder="e-mail…"
-          style="padding:.6rem .9rem;border:1px solid #ddd;border-radius:.5rem;font-size:.9rem;">
-        <div style="display:flex;gap:.75rem;">
-          <input type="password" id="admin-pwd" placeholder="hasło…"
-            style="flex:1;padding:.6rem .9rem;border:1px solid #ddd;border-radius:.5rem;font-size:.9rem;">
-          <button id="admin-login-btn" class="btn btn-primary" style="white-space:nowrap;">Zaloguj</button>
-        </div>
-      </div>
-      <p id="admin-err" style="color:#dc2626;font-size:.85rem;margin-top:.5rem;display:none;">
-        Nieprawidłowe dane lub brak uprawnień
-      </p>
-    </div>
-    <div id="admin-content" style="display:none;">
-      <div id="admin-list"></div>
-    </div>
-  </div>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <script src="assets/page.js"></script>
@@ -1091,7 +1039,6 @@ def build_opinia(d):
 <script>
 const SB_URL   = '{SB_URL}';
 const SB_KEY   = '{SB_KEY}';
-const ADM_URL  = '{REVIEW_ADMIN_URL}';
 const PLATFORM = '{d['name']}';
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
