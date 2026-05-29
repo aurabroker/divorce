@@ -9,7 +9,7 @@ var DOMAIN_CONFIG = {
   "rozwodwola.pl": { district: "Wola", key: "wola", accent: "#8B3A1A", light: "#C46A3C", bg: "#FDF0E9" },
   "rozwodochota.pl": { district: "Ochota", key: "ochota", accent: "#1A6B5B", light: "#3CA48B", bg: "#EEFAF7" },
   "rozwodmokotow.pl": { district: "Mokot\xF3w", key: "mokotow", accent: "#2D4A6B", light: "#5A7FA8", bg: "#EEF2F8" },
-  "rozwodtarchomin.pl": { district: "Tarchomin", key: "tarchomin", accent: "#4A6B1A", light: "#7FA83C", bg: "#F2F7EE" },
+  "rozwodtarchomin.pl": { district: "Tarchomin", key: "tarchomin", accent: "#4A6B1A", light: "#7FA83C", bg: "#F2F7EE", gtag: "AW-18123853335" },
   "rozwodlegionowo.pl": { district: "Legionowo", key: "legionowo", accent: "#1A5E6B", light: "#3C9AA8", bg: "#EEF8FA" },
   "rozwodlomianki.pl": { district: "\u0141omianki", key: "lomianki", accent: "#2D6B1A", light: "#5AA83C", bg: "#EEF8EE" },
   "rozwodjablonna.pl": { district: "Jab\u0142onna", key: "jablonna", accent: "#6B5B1A", light: "#A89040", bg: "#FAF7EE" }
@@ -151,6 +151,14 @@ function buildOpiniaHTML(cfg) {
   .admin-btn.reject{background:#f59e0b;color:#fff;border-color:#f59e0b;}
   .admin-btn.del{background:#dc2626;color:#fff;border-color:#dc2626;}
 </style>
+${cfg.gtag ? `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=${cfg.gtag}"><\/script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${cfg.gtag}');
+<\/script>` : ''}
 </head>
 <body>
 <div class="ticker-wrap"><div class="ticker-track" id="ticker-track"></div></div>
@@ -441,6 +449,14 @@ function buildHTML(cfg, hostname) {
     .hero-2col .hero-actions { flex-direction: column; }
   }
 </style>
+${cfg.gtag ? `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=${cfg.gtag}"><\/script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${cfg.gtag}');
+<\/script>` : ''}
 </head>
 <body>
 
