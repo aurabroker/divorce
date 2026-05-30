@@ -9,7 +9,7 @@ var DOMAIN_CONFIG = {
   "rozwodwola.pl": { district: "Wola", key: "wola", accent: "#8B3A1A", light: "#C46A3C", bg: "#FDF0E9" },
   "rozwodochota.pl": { district: "Ochota", key: "ochota", accent: "#1A6B5B", light: "#3CA48B", bg: "#EEFAF7" },
   "rozwodmokotow.pl": { district: "Mokot\xF3w", key: "mokotow", accent: "#2D4A6B", light: "#5A7FA8", bg: "#EEF2F8" },
-  "rozwodtarchomin.pl": { district: "Tarchomin", key: "tarchomin", accent: "#4A6B1A", light: "#7FA83C", bg: "#F2F7EE", gtag: "AW-18123853335" },
+  "rozwodtarchomin.pl": { district: "Tarchomin", key: "tarchomin", accent: "#4A6B1A", light: "#7FA83C", bg: "#F2F7EE", gtag: "AW-18123853335", conversionTag: "AW-18123853335/ocgpCLSM168cEJeckMJD" },
   "rozwodlegionowo.pl": { district: "Legionowo", key: "legionowo", accent: "#1A5E6B", light: "#3C9AA8", bg: "#EEF8FA" },
   "rozwodlomianki.pl": { district: "\u0141omianki", key: "lomianki", accent: "#2D6B1A", light: "#5AA83C", bg: "#EEF8EE" },
   "rozwodjablonna.pl": { district: "Jab\u0142onna", key: "jablonna", accent: "#6B5B1A", light: "#A89040", bg: "#FAF7EE" }
@@ -38,6 +38,11 @@ var worker_default = {
     if (url.pathname === "/opinia.html") {
       return new Response(buildOpiniaHTML(cfg), {
         headers: { "Content-Type": "text/html; charset=utf-8", ...cacheHeaders(300) }
+      });
+    }
+    if (url.pathname === "/dziekujemy.html") {
+      return new Response(buildDziekujemyHTML(cfg, hostname), {
+        headers: { "Content-Type": "text/html; charset=utf-8", ...cacheHeaders(0) }
       });
     }
     return new Response(buildHTML(cfg, hostname), {
@@ -384,6 +389,70 @@ function renderRows(rows,isPending){
 </html>`;
 }
 __name(buildOpiniaHTML, "buildOpiniaHTML");
+function buildDziekujemyHTML(cfg, hostname) {
+  return `<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dziękujemy | Kancelaria Idzik-Cieśla</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://${hostname}/dziekujemy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<style>:root{--accent:${cfg.accent};--accent-light:${cfg.light};--accent-bg:${cfg.bg};}</style>
+${cfg.gtag ? `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=${cfg.gtag}"><\/script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${cfg.gtag}');
+<\/script>` : ''}
+</head>
+<body>
+${cfg.gtag && cfg.conversionTag ? `<!-- Event snippet for Kontakt conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': '${cfg.conversionTag}'});
+<\/script>` : ''}
+<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"></div></div>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="https://${hostname}/" class="nav-logo" aria-label="Strona główna">
+      <span class="nav-logo-name">Kancelaria Adwokacka</span>
+      <span class="nav-logo-sub">Magdalena Idzik‑Cieśla</span>
+    </a>
+  </div>
+</header>
+<main>
+<section class="section" style="min-height:60vh;display:flex;align-items:center;">
+  <div class="container">
+    <div style="max-width:560px;margin:0 auto;text-align:center;padding:4rem 0;">
+      <div style="font-size:3.5rem;margin-bottom:1.5rem;">&#x2705;</div>
+      <h1 style="font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:1rem;">Dziękujemy za wiadomość!</h1>
+      <p style="color:var(--text-muted);font-size:1.05rem;line-height:1.7;margin-bottom:2rem;">
+        Oddzwonimy do Ciebie w ciągu <strong>2 godzin</strong> w dni robocze (8:00–18:00).
+        Jeśli wolisz zadzwonić sam — jesteśmy dostępni pod numerem poniżej.
+      </p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;">
+        <a href="tel:+48605089552" class="btn btn-primary btn-lg">&#x1F4DE; 605 089 552</a>
+        <a href="https://${hostname}/" class="btn btn-outline btn-lg">← Wr\xF3ć na stronę</a>
+      </div>
+      <p style="font-size:.85rem;color:var(--text-muted);">
+        Kancelaria Adwokacka Magdalena Idzik-Cieśla &nbsp;\xB7&nbsp; ${cfg.district}
+      </p>
+    </div>
+  </div>
+</section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"><\/script>
+<script src="/assets/page.js"><\/script>
+</body>
+</html>`;
+}
+__name(buildDziekujemyHTML, "buildDziekujemyHTML");
 function buildHTML(cfg, hostname) {
   const title = `Adwokat Rozwodowy ${cfg.district} | Kancelaria Idzik-Cie\u015Bla`;
   const desc = `Adwokat rozwodowy ${cfg.district} \u2014 Kancelaria Magdalena Idzik-Cie\u015Bla. Bezp\u0142atna konsultacja 30 minut. Tel. 605 089 552.`;
